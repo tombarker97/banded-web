@@ -234,6 +234,14 @@
             <li>You may select up to four gigs as your all-time favourites, displayed on your profile</li>
         </ul>
 
+        <h3>2.10 Analytics Data</h3>
+        <p>We use Mixpanel to understand how people use Banded so we can improve the app. Mixpanel collects:</p>
+        <ul>
+            <li><strong>Automatic events</strong> — app opens, screen views, and basic interaction events</li>
+            <li><strong>User properties</strong> — your username, display name, and city (linked to your user ID)</li>
+        </ul>
+        <p>Analytics data is processed on Mixpanel's EU servers. We do not use analytics data for advertising or share it with third parties.</p>
+
         <!-- 3. WHAT WE DO NOT COLLECT -->
         <h2>3. What We Do Not Collect</h2>
         <p>Banded does not collect:</p>
@@ -243,7 +251,7 @@
             <li>Contacts or address book data</li>
             <li>Browsing history or search history outside the app</li>
             <li>Precise GPS tracking or background location</li>
-            <li>Analytics, telemetry, or crash reporting data — we do not use any third-party analytics SDKs</li>
+            <li>Crash reporting or telemetry data beyond the analytics described in Section 2.10</li>
         </ul>
 
         <!-- 4. LEGAL BASIS -->
@@ -276,6 +284,10 @@
                 <tr>
                     <td>Calendar access</td>
                     <td><strong>Consent</strong> — you choose to grant calendar access; you can revoke this at any time</td>
+                </tr>
+                <tr>
+                    <td>Analytics data</td>
+                    <td><strong>Legitimate interest</strong> — to understand how the app is used and improve the experience; processed on EU servers</td>
                 </tr>
             </tbody>
         </table>
@@ -328,7 +340,13 @@
         <p><strong>Data shared:</strong> Wikidata entity ID only. No user data is sent.</p>
         <p><a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy">Wikimedia Privacy Policy</a></p>
 
-        <h3>6.7 Apple Services</h3>
+        <h3>6.7 Mixpanel</h3>
+        <p><strong>Purpose:</strong> Product analytics — to understand how users interact with Banded so we can improve the app experience.</p>
+        <p><strong>Data shared:</strong> Your user ID (UUID), username, display name, and city. Mixpanel also collects automatic interaction events (app opens, screen views). No gig diary content, photos, or social data is sent to Mixpanel.</p>
+        <p><strong>Location:</strong> Data is sent to Mixpanel's EU servers (<code>api-eu.mixpanel.com</code>).</p>
+        <p><a href="https://mixpanel.com/legal/privacy-policy/">Mixpanel Privacy Policy</a></p>
+
+        <h3>6.8 Apple Services</h3>
         <ul>
             <li><strong>Sign in with Apple</strong> — used for account authentication. Apple provides us with an identity token; we do not receive your Apple ID password. <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a></li>
             <li><strong>Apple Push Notification service (APNs)</strong> — used to deliver push notifications to your device. We send your device token and notification content to Apple's servers.</li>
@@ -444,9 +462,9 @@
                     <td>—</td>
                 </tr>
                 <tr>
-                    <td>Usage Data</td>
-                    <td>No</td>
-                    <td>—</td>
+                    <td>Usage Data (app interactions)</td>
+                    <td>Yes</td>
+                    <td>Analytics (Mixpanel)</td>
                 </tr>
                 <tr>
                     <td>Diagnostics</td>
