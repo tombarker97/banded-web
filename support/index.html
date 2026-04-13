@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — Banded</title>
+    <meta name="description" content="Banded Support. Get help with the Banded social gig diary app.">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #080810;
+            color: #FFFFFF;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+
+        nav {
+            margin-bottom: 48px;
+        }
+
+        nav a {
+            color: #8B9DC3;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: #FFFFFF; }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #8B9DC3;
+            font-size: 18px;
+            margin-bottom: 48px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 48px;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+        }
+
+        p {
+            color: #C8D1E0;
+            margin-bottom: 16px;
+        }
+
+        a {
+            color: #3B82F6;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover { color: #60A5FA; }
+
+        /* Contact card */
+        .contact-card {
+            background: rgba(59, 130, 246, 0.06);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 48px;
+        }
+
+        .contact-card h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .contact-email {
+            font-size: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .response-time {
+            color: #8B9DC3;
+            font-size: 14px;
+        }
+
+        /* FAQ accordion */
+        details {
+            border-bottom: 1px solid rgba(139, 157, 195, 0.15);
+        }
+
+        details:first-of-type {
+            border-top: 1px solid rgba(139, 157, 195, 0.15);
+        }
+
+        summary {
+            padding: 18px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #FFFFFF;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        summary:hover { color: #3B82F6; }
+
+        summary::-webkit-details-marker { display: none; }
+
+        summary::after {
+            content: '+';
+            font-size: 20px;
+            font-weight: 300;
+            color: #8B9DC3;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        details[open] summary::after {
+            content: '\2212';
+        }
+
+        .answer {
+            padding: 0 0 20px;
+            color: #C8D1E0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Privacy section */
+        .privacy-section {
+            background: rgba(139, 157, 195, 0.06);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 48px;
+        }
+
+        .privacy-section h2 {
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            margin-top: 64px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(139, 157, 195, 0.15);
+            color: #8B9DC3;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        footer a { color: #8B9DC3; }
+        footer a:hover { color: #FFFFFF; }
+
+        @media (max-width: 480px) {
+            .container { padding: 40px 18px 60px; }
+            h1 { font-size: 26px; }
+            h2 { font-size: 20px; }
+            .contact-card { padding: 20px; }
+            .contact-email { font-size: 18px; }
+            footer { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="/">&larr; Banded</a>
+        </nav>
+
+        <h1>Support</h1>
+        <p class="subtitle">We're here to help</p>
+
+        <!-- Contact -->
+        <div class="contact-card">
+            <h2>Get in Touch</h2>
+            <a href="mailto:hello@banded.uk" class="contact-email">hello@banded.uk</a>
+            <p class="response-time">We aim to respond within 48 hours.</p>
+        </div>
+
+        <!-- FAQ -->
+        <h2>Frequently Asked Questions</h2>
+
+        <details>
+            <summary>How do I log a gig?</summary>
+            <div class="answer">
+                Tap the Log tab (the + icon) in the tab bar, search for the artist, fill in the details — venue, date, ratings, and an optional review — then tap Save. Your gig will appear in your diary and, if set to public, in your followers' feeds.
+            </div>
+        </details>
+
+        <details>
+            <summary>Can I log gigs I went to in the past?</summary>
+            <div class="answer">
+                Yes — you can log any gig regardless of when it happened. Just select the correct date when logging. There's no limit on how far back you can go, so feel free to build up your full gig history.
+            </div>
+        </details>
+
+        <details>
+            <summary>How do I find and follow friends?</summary>
+            <div class="answer">
+                Use the Search tab to search for users by username. Tap their profile and tap Follow. You'll then see their public gig logs in your feed.
+            </div>
+        </details>
+
+        <details>
+            <summary>How do I change my genre preferences?</summary>
+            <div class="answer">
+                Go to Profile &rarr; Settings &rarr; Genre Preferences to update the genres used to personalise your Discover feed. Your recommendations will update immediately.
+            </div>
+        </details>
+
+        <details>
+            <summary>How do I delete my account?</summary>
+            <div class="answer">
+                Go to Profile &rarr; Settings &rarr; Account &rarr; Delete Account. This permanently removes all your data — your profile, gig logs, photos, comments, follows, and everything else. This action cannot be undone.
+            </div>
+        </details>
+
+        <details>
+            <summary>How do I report a user?</summary>
+            <div class="answer">
+                Tap the three-dot menu on any post or profile and select Report. We review all reports and take action where our community guidelines are breached.
+            </div>
+        </details>
+
+        <details>
+            <summary>My gig isn't showing up in the Discover tab — why?</summary>
+            <div class="answer">
+                The Discover tab shows upcoming events sourced from Ticketmaster and other providers. Independent shows, DICE-only events, and Resident Advisor listings may not appear. You can still log these gigs manually — just search for the artist and enter the details yourself.
+            </div>
+        </details>
+
+        <details>
+            <summary>How do I share my gig to Instagram?</summary>
+            <div class="answer">
+                Open any logged gig from your diary, tap the share icon, and select "Share to Instagram Stories". Banded creates a ticket-stub style share card with your gig details that you can post directly to your story.
+            </div>
+        </details>
+
+        <details>
+            <summary>How do I cancel Banded Pro?</summary>
+            <div class="answer">
+                Go to iPhone Settings &rarr; your name (Apple ID) &rarr; Subscriptions &rarr; Banded Pro &rarr; Cancel Subscription. Your Pro features will remain active until the end of the current billing period.
+            </div>
+        </details>
+
+        <details>
+            <summary>I found a bug — how do I report it?</summary>
+            <div class="answer">
+                Email <a href="mailto:hello@banded.uk">hello@banded.uk</a> with a description of what happened, what you expected to happen, and your iPhone model and iOS version. Screenshots or screen recordings are really helpful if you can include them.
+            </div>
+        </details>
+
+        <!-- Privacy -->
+        <div class="privacy-section">
+            <h2>Your Privacy</h2>
+            <p>Your privacy matters to us. We only collect data that's necessary to provide the Banded experience, and we never sell your data to third parties. Read our full <a href="/privacy">Privacy Policy</a> for details on how we handle your information.</p>
+        </div>
+
+        <footer>
+            <span>&copy; 2026 Banded</span>
+            <span>
+                <a href="/">Home</a> &middot;
+                <a href="/privacy">Privacy Policy</a> &middot;
+                <a href="mailto:hello@banded.uk">hello@banded.uk</a>
+            </span>
+        </footer>
+    </div>
+</body>
+</html>
