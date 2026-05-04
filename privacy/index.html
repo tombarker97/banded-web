@@ -148,7 +148,7 @@
         </nav>
 
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last updated: April 2026</p>
+        <p class="last-updated">Last updated: May 2026</p>
 
         <!-- 1. WHO WE ARE -->
         <h2>1. Who We Are</h2>
@@ -185,6 +185,7 @@
             <li>Visibility setting (public, friends-only, or private)</li>
             <li>External identifiers linking the gig to third-party databases (Ticketmaster event ID, MusicBrainz artist ID, Spotify artist ID) — these contain no personal data</li>
         </ul>
+        <p>If you import gigs from screenshots or screen recordings of ticket apps (e.g. DICE, Resident Advisor), Banded creates private "drafts" containing the extracted gig details, the import source (screenshot or screen recording), the originating platform, and a confidence score for the extraction. Drafts are private to you until you publish them as gig logs. The original screenshots or screen recordings are not retained after extraction.</p>
 
         <h3>2.3 Social Data</h3>
         <ul>
@@ -242,16 +243,26 @@
         </ul>
         <p>Analytics data is processed on Mixpanel's EU servers. We do not use analytics data for advertising or share it with third parties.</p>
 
+        <h3>2.11 Subscription Data</h3>
+        <ul>
+            <li>If you subscribe to Banded Pro or Banded Backstage, we receive your subscription tier and entitlement status from RevenueCat. Payment is handled by Apple via the App Store; we do not see or store your card details, Apple ID password, or full purchase receipt.</li>
+        </ul>
+
+        <h3>2.12 Crash and Performance Data</h3>
+        <ul>
+            <li>If the app crashes or hits a serious error, we collect a crash report containing the stack trace, app version, device model, iOS version, and the breadcrumbs (recent in-app actions) leading up to the crash. This is processed by Sentry and used solely to diagnose and fix bugs. No gig content, photos, or other user content is included.</li>
+        </ul>
+
         <!-- 3. WHAT WE DO NOT COLLECT -->
         <h2>3. What We Do Not Collect</h2>
         <p>Banded does not collect:</p>
         <ul>
             <li>Health or fitness data</li>
-            <li>Financial information (no payment processing is currently implemented)</li>
+            <li>Credit card or bank details — payment processing for Banded Pro and Backstage is handled entirely by Apple via the App Store; we never see your card number, billing address, or Apple ID credentials</li>
             <li>Contacts or address book data</li>
             <li>Browsing history or search history outside the app</li>
             <li>Precise GPS tracking or background location</li>
-            <li>Crash reporting or telemetry data beyond the analytics described in Section 2.10</li>
+            <li>Audio or video recordings</li>
         </ul>
 
         <!-- 4. LEGAL BASIS -->
@@ -288,6 +299,18 @@
                 <tr>
                     <td>Analytics data</td>
                     <td><strong>Legitimate interest</strong> — to understand how the app is used and improve the experience; processed on EU servers</td>
+                </tr>
+                <tr>
+                    <td>Crash and performance data</td>
+                    <td><strong>Legitimate interest</strong> — to detect and fix bugs that affect app stability</td>
+                </tr>
+                <tr>
+                    <td>Subscription data</td>
+                    <td><strong>Contract performance</strong> — necessary to provide the paid Banded Pro and Backstage tiers you subscribe to</td>
+                </tr>
+                <tr>
+                    <td>Imported screenshots / screen recordings</td>
+                    <td><strong>Consent</strong> — you choose to import gigs by uploading the source media; we process it only to extract gig details</td>
                 </tr>
             </tbody>
         </table>
@@ -350,9 +373,31 @@
         <ul>
             <li><strong>Sign in with Apple</strong> — used for account authentication. Apple provides us with an identity token; we do not receive your Apple ID password. <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a></li>
             <li><strong>Apple Push Notification service (APNs)</strong> — used to deliver push notifications to your device. We send your device token and notification content to Apple's servers.</li>
+            <li><strong>Apple Music API</strong> — used to retrieve artist images, editorial biographies, and short song previews. Search parameters (artist name) only are sent; no user data.</li>
             <li><strong>Apple MapKit</strong> — used to display maps and search for venues within the app. MapKit runs locally on your device; map tile requests are handled by Apple.</li>
             <li><strong>Apple EventKit</strong> — used to write events to your Apple Calendar. This runs locally on your device; no calendar data is sent to our servers.</li>
+            <li><strong>Apple StoreKit</strong> — used to process in-app purchases for Banded Pro and Backstage subscriptions. Apple handles all payment details; Banded receives only an entitlement confirmation via RevenueCat.</li>
         </ul>
+
+        <h3>6.9 RevenueCat</h3>
+        <p><strong>Purpose:</strong> Manages in-app subscription state for Banded Pro and Banded Backstage, including entitlement checks and receipt validation.</p>
+        <p><strong>Data shared:</strong> Your user ID (UUID), subscription tier, and the App Store receipt necessary to validate your entitlement. Payment information itself is handled exclusively by Apple via StoreKit and is not shared with RevenueCat or Banded.</p>
+        <p><a href="https://www.revenuecat.com/privacy">RevenueCat Privacy Policy</a></p>
+
+        <h3>6.10 Sentry</h3>
+        <p><strong>Purpose:</strong> Crash reporting and performance monitoring — to detect and diagnose app crashes and serious errors so we can fix them.</p>
+        <p><strong>Data shared:</strong> When a crash or serious error occurs, Sentry receives the stack trace, app version, device model, iOS version, and breadcrumbs (a short trail of recent in-app actions). No gig content, photos, message content, or precise location data is included.</p>
+        <p><a href="https://sentry.io/privacy/">Sentry Privacy Policy</a></p>
+
+        <h3>6.11 Anthropic (Claude)</h3>
+        <p><strong>Purpose:</strong> When you use the gig import feature with screenshots or screen recordings of ticket apps (such as DICE or Resident Advisor), Banded uses Anthropic's Claude API to extract structured gig details (artist, venue, date, etc.) from the imported media.</p>
+        <p><strong>Data shared:</strong> Only the screenshots, screen recordings, or extracted text from the imported media. Anthropic does not use Banded's API requests to train its models, in line with the Anthropic Commercial Terms of Service.</p>
+        <p><a href="https://www.anthropic.com/legal/privacy">Anthropic Privacy Policy</a></p>
+
+        <h3>6.12 Cloudflare Turnstile</h3>
+        <p><strong>Purpose:</strong> A privacy-respecting CAPTCHA used to protect Banded's email/password sign-up, sign-in, and password-reset endpoints from automated abuse. Sign-in with Apple bypasses this check.</p>
+        <p><strong>Data shared:</strong> A challenge token issued by Cloudflare. Cloudflare may collect basic device and network signals as part of the challenge; it does not use behavioural biometrics or third-party cookies.</p>
+        <p><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></p>
 
         <!-- 7. DATA RETENTION -->
         <h2>7. Data Retention</h2>
@@ -388,7 +433,7 @@
             <li>Standard Contractual Clauses (SCCs) approved by the UK government</li>
             <li>Transfers to countries recognised by the UK as providing an adequate level of data protection</li>
         </ul>
-        <p>Third-party music data services (Ticketmaster, MusicBrainz, Setlist.fm, Fanart.tv, Wikimedia) may process API requests on servers located worldwide. However, no personal user data is sent to these services — only search parameters such as artist names, locations, and dates.</p>
+        <p>Third-party music data services (Ticketmaster, MusicBrainz, Setlist.fm, Fanart.tv, Wikimedia, Apple Music) may process API requests on servers located worldwide. However, no personal user data is sent to these services — only search parameters such as artist names, locations, and dates. RevenueCat, Sentry, and Anthropic process data on infrastructure that may be located in the United States; their privacy policies (linked above) describe the safeguards in place.</p>
 
         <!-- 10. CHILDREN'S PRIVACY -->
         <h2>10. Children's Privacy</h2>
@@ -467,9 +512,14 @@
                     <td>Analytics (Mixpanel)</td>
                 </tr>
                 <tr>
-                    <td>Diagnostics</td>
-                    <td>No</td>
-                    <td>—</td>
+                    <td>Diagnostics (crashes, performance)</td>
+                    <td>Yes</td>
+                    <td>App stability (Sentry)</td>
+                </tr>
+                <tr>
+                    <td>Purchases</td>
+                    <td>Yes</td>
+                    <td>Subscription entitlement (RevenueCat / Apple StoreKit)</td>
                 </tr>
             </tbody>
         </table>
@@ -506,6 +556,8 @@
             <span>&copy; 2026 Banded</span>
             <span>
                 <a href="/">Home</a> &middot;
+                <a href="/terms">Terms</a> &middot;
+                <a href="/data">Data</a> &middot;
                 <a href="/support">Support</a> &middot;
                 <a href="mailto:hello@banded.uk">hello@banded.uk</a>
             </span>
