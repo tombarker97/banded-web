@@ -176,7 +176,7 @@
 
         <h3>Setlist.fm</h3>
         <p><span class="source-meta">Setlist.fm API terms</span> <span class="source-meta">CC-BY-SA 3.0</span></p>
-        <p>Recent setlists used to pre-fill the songs played at a gig you're logging. Setlists on Setlist.fm are user-contributed under a Creative Commons Attribution-ShareAlike licence; where we display the full list of songs, we credit Setlist.fm.</p>
+        <p>Recent setlists for an artist, displayed on the artist page so you can see what they've been playing live. Setlists on Setlist.fm are user-contributed under a Creative Commons Attribution-ShareAlike licence; where we display them in Banded we credit Setlist.fm.</p>
         <p><a href="https://www.setlist.fm/">setlist.fm</a> &middot; <a href="https://www.setlist.fm/help/terms">Terms</a></p>
 
         <!-- 4. ARTIST IMAGES -->
@@ -198,7 +198,7 @@
 
         <h3>Anthropic Claude</h3>
         <p><span class="source-meta">Anthropic Commercial Terms</span></p>
-        <p>If you import gigs by uploading screenshots or screen recordings of ticket apps (DICE, Resident Advisor, etc.), Banded sends those images or recordings to Anthropic's Claude API to extract the structured gig details (artist, venue, date, support acts) into a private draft for you to review and publish. Anthropic does not use our API requests to train its models, in line with their commercial terms.</p>
+        <p>When you import gigs from screenshots or screen recordings of ticket apps (DICE, Resident Advisor, etc.), Apple's on-device Vision framework reads the text from those images on your iPhone. Only that extracted text is then sent to Anthropic's Claude API, which parses it into structured gig details (artist, venue, date, support acts) for a private draft you review and publish. The original screenshots and screen recordings never leave your device. Anthropic does not use our API requests to train its models, in line with their commercial terms.</p>
         <p><a href="https://www.anthropic.com/legal/commercial-terms">anthropic.com/legal/commercial-terms</a></p>
 
         <!-- 6. INFRASTRUCTURE -->
@@ -206,11 +206,11 @@
 
         <h3>Supabase</h3>
         <p><span class="source-meta">Backend, auth, file storage</span></p>
-        <p>Stores your account, gig logs, photos, and social graph. EU/US infrastructure with row-level security policies enforcing per-user access. <a href="https://supabase.com/privacy">Privacy</a></p>
+        <p>Stores your account, gig logs, profile images (avatar and banner), and social graph. EU/US infrastructure with row-level security policies enforcing per-user access. <a href="https://supabase.com/privacy">Privacy</a></p>
 
         <h3>Mixpanel</h3>
         <p><span class="source-meta">Product analytics, EU servers</span></p>
-        <p>Aggregate usage metrics so we can see which features people actually use. No gig content, photos, or messages are sent. <a href="https://mixpanel.com/legal/privacy-policy/">Privacy</a></p>
+        <p>Aggregate usage metrics so we can see which features people actually use. No gig content or messages are sent. <a href="https://mixpanel.com/legal/privacy-policy/">Privacy</a></p>
 
         <h3>Sentry</h3>
         <p><span class="source-meta">Crash reporting</span></p>

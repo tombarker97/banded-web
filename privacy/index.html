@@ -164,7 +164,7 @@
             <li><strong>Email address</strong> — used for magic-link sign-in and account communications</li>
             <li><strong>Apple ID token</strong> — if you choose Sign in with Apple (we receive the identity token Apple provides; we do not access your Apple ID password)</li>
             <li><strong>Username and display name</strong> — chosen by you during onboarding</li>
-            <li><strong>Profile photo</strong> — optionally uploaded by you, stored in our cloud storage</li>
+            <li><strong>Profile avatar</strong> — optionally uploaded by you, stored in our cloud storage (see Section 2.5 for details)</li>
             <li><strong>Bio</strong> — an optional short description you write</li>
             <li><strong>City</strong> — set during onboarding to personalise event recommendations</li>
             <li><strong>Genre preferences</strong> — music genres you select to tailor your Discover feed</li>
@@ -179,13 +179,11 @@
             <li>Ticket price</li>
             <li>Your ratings (Artist and Venue, each on a 0.5–5 scale)</li>
             <li>Your written review</li>
-            <li>Gig photos you upload (compressed to JPEG quality, max 1200 px before storage)</li>
-            <li>Setlist (list of songs performed)</li>
             <li>Genre, festival name, and context tag</li>
             <li>Visibility setting (public, friends-only, or private)</li>
             <li>External identifiers linking the gig to third-party databases (Ticketmaster event ID, MusicBrainz artist ID, Spotify artist ID) — these contain no personal data</li>
         </ul>
-        <p>If you import gigs from screenshots or screen recordings of ticket apps (e.g. DICE, Resident Advisor), Banded creates private "drafts" containing the extracted gig details, the import source (screenshot or screen recording), the originating platform, and a confidence score for the extraction. Drafts are private to you until you publish them as gig logs. The original screenshots or screen recordings are not retained after extraction.</p>
+        <p>If you import gigs from screenshots or screen recordings of ticket apps (e.g. DICE, Resident Advisor), Banded creates private "drafts" containing the extracted gig details, the import source (screenshot or screen recording), the originating platform, and a confidence score for the extraction. Drafts are private to you until you publish them as gig logs. The original screenshots and screen recordings stay on your device — only the on-device-extracted text is sent for processing.</p>
 
         <h3>2.3 Social Data</h3>
         <ul>
@@ -203,12 +201,11 @@
             <li>Event metadata sourced from Ticketmaster (artist, venue, date, ticket URL)</li>
         </ul>
 
-        <h3>2.5 Photos and Camera Data</h3>
+        <h3>2.5 Profile Images</h3>
         <ul>
-            <li>Photos captured via the in-app camera (front and rear) are uploaded to our cloud storage</li>
-            <li>Photos may be temporarily stored as "pending" until you attach them to a gig log</li>
-            <li>Profile avatars you upload (max 5 MB; JPEG, PNG, WebP, or HEIC)</li>
-            <li>If you choose to save photos to your device camera roll, Banded writes to your photo library but does not read or access existing photos</li>
+            <li><strong>Profile avatar</strong> — an optional image you upload to display on your profile (max 5 MB; JPEG, PNG, WebP, or HEIC). Stored in our cloud storage.</li>
+            <li><strong>Profile banner</strong> — Banded Pro and Banded Backstage subscribers can upload a custom banner image displayed at the top of their profile. Stored in our cloud storage.</li>
+            <li>If you choose to save share cards to your device camera roll, Banded writes to your photo library but does not read or access existing photos.</li>
         </ul>
 
         <h3>2.6 Notification Data</h3>
@@ -250,7 +247,7 @@
 
         <h3>2.12 Crash and Performance Data</h3>
         <ul>
-            <li>If the app crashes or hits a serious error, we collect a crash report containing the stack trace, app version, device model, iOS version, and the breadcrumbs (recent in-app actions) leading up to the crash. This is processed by Sentry and used solely to diagnose and fix bugs. No gig content, photos, or other user content is included.</li>
+            <li>If the app crashes or hits a serious error, we collect a crash report containing the stack trace, app version, device model, iOS version, and the breadcrumbs (recent in-app actions) leading up to the crash. This is processed by Sentry and used solely to diagnose and fix bugs. No gig content or other user content is included.</li>
         </ul>
 
         <!-- 3. WHAT WE DO NOT COLLECT -->
@@ -281,8 +278,8 @@
                     <td><strong>Contract performance</strong> — necessary to provide the Banded service you signed up for</td>
                 </tr>
                 <tr>
-                    <td>Photos and camera data</td>
-                    <td><strong>Contract performance</strong> — core feature of logging gigs</td>
+                    <td>Profile images (avatar and banner)</td>
+                    <td><strong>Contract performance</strong> — to display your profile to other users; custom banners require a paid Banded Pro or Backstage subscription</td>
                 </tr>
                 <tr>
                     <td>Push notifications and device token</td>
@@ -309,8 +306,8 @@
                     <td><strong>Contract performance</strong> — necessary to provide the paid Banded Pro and Backstage tiers you subscribe to</td>
                 </tr>
                 <tr>
-                    <td>Imported screenshots / screen recordings</td>
-                    <td><strong>Consent</strong> — you choose to import gigs by uploading the source media; we process it only to extract gig details</td>
+                    <td>Imported gig text (from on-device OCR)</td>
+                    <td><strong>Consent</strong> — you choose to import gigs; we process the text Apple Vision extracts on your iPhone, never the original screenshots or recordings</td>
                 </tr>
             </tbody>
         </table>
@@ -322,7 +319,7 @@
             <li><strong>Gig diary data</strong> — to store and display your gig history, enable ratings and reviews, and show your activity in friends' feeds</li>
             <li><strong>Social data</strong> — to enable following, likes, comments, and the "also been" feature; to enforce blocks</li>
             <li><strong>Wishlist and events data</strong> — to show you upcoming events for artists you are interested in and to send gig alerts when a wishlisted artist announces a show</li>
-            <li><strong>Photos</strong> — to attach images to your gig logs and display them to other users; to set your profile avatar</li>
+            <li><strong>Profile images</strong> — to display your profile avatar to other users, and (for Banded Pro and Backstage subscribers) your custom profile banner</li>
             <li><strong>Notification data</strong> — to send you push notifications about activity on your posts (likes, comments, new followers), wishlist artist alerts, and show-time reminders</li>
             <li><strong>Location data</strong> — to find and display nearby upcoming events on the Discover map</li>
             <li><strong>Calendar data</strong> — to add upcoming gigs you have saved to your Apple Calendar with a 30-minute reminder</li>
@@ -333,7 +330,7 @@
         <p>Banded uses the following third-party services. For each service, we describe what data (if any) is shared and why.</p>
 
         <h3>6.1 Supabase</h3>
-        <p><strong>Purpose:</strong> Database, user authentication, and file storage (photos and avatars).</p>
+        <p><strong>Purpose:</strong> Database, user authentication, and file storage (profile avatars and Pro/Backstage banners).</p>
         <p><strong>Data shared:</strong> All user data described in this policy is stored in Supabase. Authentication tokens (JWT) are managed by Supabase.</p>
         <p><strong>Location:</strong> Supabase infrastructure may be hosted in the EU or US. See Section 9 (International Data Transfers) below.</p>
         <p><a href="https://supabase.com/privacy">Supabase Privacy Policy</a></p>
@@ -349,8 +346,8 @@
         <p><a href="https://musicbrainz.org/doc/About/Privacy_Policy">MusicBrainz Privacy Policy</a></p>
 
         <h3>6.4 Setlist.fm</h3>
-        <p><strong>Purpose:</strong> To retrieve recent setlists for artists to help pre-fill gig logs.</p>
-        <p><strong>Data shared:</strong> Artist name and performance date only. No user data is sent.</p>
+        <p><strong>Purpose:</strong> To retrieve recent setlists for an artist, displayed on the artist page in Banded so you can see what they've been playing live. Setlist data is not stored against your gig logs.</p>
+        <p><strong>Data shared:</strong> Artist name only. No user data is sent.</p>
         <p><a href="https://www.setlist.fm/help/terms">Setlist.fm Terms of Use</a></p>
 
         <h3>6.5 Fanart.tv</h3>
@@ -365,7 +362,7 @@
 
         <h3>6.7 Mixpanel</h3>
         <p><strong>Purpose:</strong> Product analytics — to understand how users interact with Banded so we can improve the app experience.</p>
-        <p><strong>Data shared:</strong> Your user ID (UUID), username, display name, and city. Mixpanel also collects automatic interaction events (app opens, screen views). No gig diary content, photos, or social data is sent to Mixpanel.</p>
+        <p><strong>Data shared:</strong> Your user ID (UUID), username, display name, and city. Mixpanel also collects automatic interaction events (app opens, screen views). No gig diary content or social data is sent to Mixpanel.</p>
         <p><strong>Location:</strong> Data is sent to Mixpanel's EU servers (<code>api-eu.mixpanel.com</code>).</p>
         <p><a href="https://mixpanel.com/legal/privacy-policy/">Mixpanel Privacy Policy</a></p>
 
@@ -386,12 +383,12 @@
 
         <h3>6.10 Sentry</h3>
         <p><strong>Purpose:</strong> Crash reporting and performance monitoring — to detect and diagnose app crashes and serious errors so we can fix them.</p>
-        <p><strong>Data shared:</strong> When a crash or serious error occurs, Sentry receives the stack trace, app version, device model, iOS version, and breadcrumbs (a short trail of recent in-app actions). No gig content, photos, message content, or precise location data is included.</p>
+        <p><strong>Data shared:</strong> When a crash or serious error occurs, Sentry receives the stack trace, app version, device model, iOS version, and breadcrumbs (a short trail of recent in-app actions). No gig content, message content, or precise location data is included.</p>
         <p><a href="https://sentry.io/privacy/">Sentry Privacy Policy</a></p>
 
         <h3>6.11 Anthropic (Claude)</h3>
-        <p><strong>Purpose:</strong> When you use the gig import feature with screenshots or screen recordings of ticket apps (such as DICE or Resident Advisor), Banded uses Anthropic's Claude API to extract structured gig details (artist, venue, date, etc.) from the imported media.</p>
-        <p><strong>Data shared:</strong> Only the screenshots, screen recordings, or extracted text from the imported media. Anthropic does not use Banded's API requests to train its models, in line with the Anthropic Commercial Terms of Service.</p>
+        <p><strong>Purpose:</strong> When you use the gig import feature with screenshots or screen recordings of ticket apps (such as DICE or Resident Advisor), text is read from those images by Apple's Vision framework on your iPhone, and that text is then sent to Anthropic's Claude API to be parsed into structured gig details (artist, venue, date, etc.).</p>
+        <p><strong>Data shared:</strong> Only the text that Apple's on-device Vision framework extracts from your imported screenshots or screen recordings. The screenshots and recordings themselves never leave your device. Anthropic does not use Banded's API requests to train its models, in line with the Anthropic Commercial Terms of Service.</p>
         <p><a href="https://www.anthropic.com/legal/privacy">Anthropic Privacy Policy</a></p>
 
         <h3>6.12 Cloudflare Turnstile</h3>
@@ -403,8 +400,8 @@
         <h2>7. Data Retention</h2>
         <p>We retain your data for as long as your account is active and you continue to use Banded.</p>
         <ul>
-            <li><strong>Account deletion:</strong> When you delete your account (via Profile &rarr; Settings &rarr; Account &rarr; Delete Account), all your personal data is permanently removed from our database, including your profile, gig logs, photos, comments, likes, follows, wishlist entries, and notification tokens. This action cannot be undone.</li>
-            <li><strong>Photos:</strong> Gig photos and profile avatars stored in our cloud storage are deleted when the associated gig log or account is deleted.</li>
+            <li><strong>Account deletion:</strong> When you delete your account (via Profile &rarr; Settings &rarr; Account &rarr; Delete Account), all your personal data is permanently removed from our database, including your profile (and any avatar or banner you've uploaded), gig logs, comments, likes, follows, wishlist entries, and notification tokens. This action cannot be undone.</li>
+            <li><strong>Profile images:</strong> Profile avatars and banners stored in our cloud storage are deleted when your account is deleted.</li>
             <li><strong>Push tokens:</strong> Your device token is removed from our database when you sign out or delete your account.</li>
             <li><strong>Backups:</strong> Deleted data may persist in encrypted database backups for up to 30 days before being permanently purged.</li>
         </ul>
@@ -467,7 +464,7 @@
                     <td>Push notifications (APNs token)</td>
                 </tr>
                 <tr>
-                    <td>User Content (photos, reviews, ratings)</td>
+                    <td>User Content (reviews, ratings, profile images)</td>
                     <td>Yes</td>
                     <td>App functionality</td>
                 </tr>
