@@ -328,6 +328,7 @@
         <!-- 6. THIRD-PARTY SERVICES -->
         <h2>6. Third-Party Services</h2>
         <p>Banded uses the following third-party services. For each service, we describe what data (if any) is shared and why.</p>
+        <p><strong>Ticket click-throughs:</strong> When you tap "Get Tickets" on a Discover event, you are redirected to the third-party ticketing platform (Ticketmaster, Oztix, etc.). We log the click internally — the source platform, event metadata, and your country if known — for our own analytics on which platforms drive engagement. This click log is not shared with the third-party platform. Once you arrive on the third-party site, that platform can see standard browser information (IP address, device user agent, referrer) per the normal web behaviour of any link click.</p>
 
         <h3>6.1 Supabase</h3>
         <p><strong>Purpose:</strong> Database, user authentication, and file storage (profile avatars and Pro/Backstage banners).</p>
@@ -340,33 +341,39 @@
         <p><strong>Data shared:</strong> Search parameters only — artist name, city or approximate location coordinates, date range, and genre filters. No account data or personal information is sent to Ticketmaster.</p>
         <p><a href="https://www.ticketmaster.co.uk/privacy">Ticketmaster Privacy Policy</a></p>
 
-        <h3>6.3 MusicBrainz</h3>
+        <h3>6.3 Oztix</h3>
+        <p><strong>Purpose:</strong> To surface upcoming live music events at independent Australian venues, complementing Ticketmaster's coverage.</p>
+        <p><strong>Data shared:</strong> None during discovery. Banded's backend crawls Oztix's public sitemap and event pages to build its own index of upcoming events — no user data is sent to Oztix during this process. When you tap "Get Tickets" on an Oztix event, your browser is redirected to the Oztix website, at which point Oztix can see standard browser information (IP address, device user agent, referrer) per the click-through note above.</p>
+        <p><strong>Affiliate:</strong> Banded does not currently take any commission on Oztix ticket sales — events are surfaced purely for discovery.</p>
+        <p><a href="https://www.oztix.com.au/privacy">Oztix Privacy Policy</a></p>
+
+        <h3>6.4 MusicBrainz</h3>
         <p><strong>Purpose:</strong> To look up artist metadata such as biography, origin, genres, and active years.</p>
         <p><strong>Data shared:</strong> Artist name or MusicBrainz ID only. No user data is sent.</p>
         <p><a href="https://musicbrainz.org/doc/About/Privacy_Policy">MusicBrainz Privacy Policy</a></p>
 
-        <h3>6.4 Setlist.fm</h3>
+        <h3>6.5 Setlist.fm</h3>
         <p><strong>Purpose:</strong> To retrieve recent setlists for an artist, displayed on the artist page in Banded so you can see what they've been playing live. Setlist data is not stored against your gig logs.</p>
         <p><strong>Data shared:</strong> Artist name only. No user data is sent.</p>
         <p><a href="https://www.setlist.fm/help/terms">Setlist.fm Terms of Use</a></p>
 
-        <h3>6.5 Fanart.tv</h3>
+        <h3>6.6 Fanart.tv</h3>
         <p><strong>Purpose:</strong> Fallback source for artist images when Ticketmaster images are unavailable.</p>
         <p><strong>Data shared:</strong> MusicBrainz artist ID only. No user data is sent.</p>
         <p><a href="https://fanart.tv/terms-of-service/">Fanart.tv Terms of Service</a></p>
 
-        <h3>6.6 Wikidata and Wikimedia Commons</h3>
+        <h3>6.7 Wikidata and Wikimedia Commons</h3>
         <p><strong>Purpose:</strong> Fallback source for artist images.</p>
         <p><strong>Data shared:</strong> Wikidata entity ID only. No user data is sent.</p>
         <p><a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy">Wikimedia Privacy Policy</a></p>
 
-        <h3>6.7 Mixpanel</h3>
+        <h3>6.8 Mixpanel</h3>
         <p><strong>Purpose:</strong> Product analytics — to understand how users interact with Banded so we can improve the app experience.</p>
         <p><strong>Data shared:</strong> Your user ID (UUID), username, display name, and city. Mixpanel also collects automatic interaction events (app opens, screen views). No gig diary content or social data is sent to Mixpanel.</p>
         <p><strong>Location:</strong> Data is sent to Mixpanel's EU servers (<code>api-eu.mixpanel.com</code>).</p>
         <p><a href="https://mixpanel.com/legal/privacy-policy/">Mixpanel Privacy Policy</a></p>
 
-        <h3>6.8 Apple Services</h3>
+        <h3>6.9 Apple Services</h3>
         <ul>
             <li><strong>Sign in with Apple</strong> — used for account authentication. Apple provides us with an identity token; we do not receive your Apple ID password. <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a></li>
             <li><strong>Apple Push Notification service (APNs)</strong> — used to deliver push notifications to your device. We send your device token and notification content to Apple's servers.</li>
@@ -376,22 +383,22 @@
             <li><strong>Apple StoreKit</strong> — used to process in-app purchases for Banded Pro and Backstage subscriptions. Apple handles all payment details; Banded receives only an entitlement confirmation via RevenueCat.</li>
         </ul>
 
-        <h3>6.9 RevenueCat</h3>
+        <h3>6.10 RevenueCat</h3>
         <p><strong>Purpose:</strong> Manages in-app subscription state for Banded Pro and Banded Backstage, including entitlement checks and receipt validation.</p>
         <p><strong>Data shared:</strong> Your user ID (UUID), subscription tier, and the App Store receipt necessary to validate your entitlement. Payment information itself is handled exclusively by Apple via StoreKit and is not shared with RevenueCat or Banded.</p>
         <p><a href="https://www.revenuecat.com/privacy">RevenueCat Privacy Policy</a></p>
 
-        <h3>6.10 Sentry</h3>
+        <h3>6.11 Sentry</h3>
         <p><strong>Purpose:</strong> Crash reporting and performance monitoring — to detect and diagnose app crashes and serious errors so we can fix them.</p>
         <p><strong>Data shared:</strong> When a crash or serious error occurs, Sentry receives the stack trace, app version, device model, iOS version, and breadcrumbs (a short trail of recent in-app actions). No gig content, message content, or precise location data is included.</p>
         <p><a href="https://sentry.io/privacy/">Sentry Privacy Policy</a></p>
 
-        <h3>6.11 Anthropic (Claude)</h3>
+        <h3>6.12 Anthropic (Claude)</h3>
         <p><strong>Purpose:</strong> When you use the gig import feature with screenshots or screen recordings of ticket apps (such as DICE or Resident Advisor), text is read from those images by Apple's Vision framework on your iPhone, and that text is then sent to Anthropic's Claude API to be parsed into structured gig details (artist, venue, date, etc.).</p>
         <p><strong>Data shared:</strong> Only the text that Apple's on-device Vision framework extracts from your imported screenshots or screen recordings. The screenshots and recordings themselves never leave your device. Anthropic does not use Banded's API requests to train its models, in line with the Anthropic Commercial Terms of Service.</p>
         <p><a href="https://www.anthropic.com/legal/privacy">Anthropic Privacy Policy</a></p>
 
-        <h3>6.12 Cloudflare Turnstile</h3>
+        <h3>6.13 Cloudflare Turnstile</h3>
         <p><strong>Purpose:</strong> A privacy-respecting CAPTCHA used to protect Banded's email/password sign-up, sign-in, and password-reset endpoints from automated abuse. Sign-in with Apple bypasses this check.</p>
         <p><strong>Data shared:</strong> A challenge token issued by Cloudflare. Cloudflare may collect basic device and network signals as part of the challenge; it does not use behavioural biometrics or third-party cookies.</p>
         <p><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></p>
