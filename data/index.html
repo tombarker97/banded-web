@@ -171,6 +171,16 @@
         <p>Independent venues, club nights on DICE-only or Resident Advisor, and many small-promoter events are not in this dataset, so they may not appear automatically — you can still log them manually.</p>
         <p><a href="https://developer.ticketmaster.com/">developer.ticketmaster.com</a></p>
 
+        <h3>Oztix</h3>
+        <p><span class="source-meta">Public sitemap + structured data, AU only</span></p>
+        <p>Independent Australian venues and festivals — the long tail Ticketmaster's catalogue misses. Banded discovers Oztix events by crawling Oztix's public sitemap and reading the schema.org event metadata each event page publishes. Our crawler identifies itself as <code>BandedBot/1.0</code>, respects <code>robots.txt</code>, and caches each event for at least 6 hours so we touch any given URL at most ~4 times a day.</p>
+        <p>No user data is sent to Oztix during this discovery process. When you tap "Get Tickets" on an Oztix event, your browser is redirected to oztix.com.au and the transaction happens there. We do not currently take any commission on Oztix sales — events are surfaced purely for discovery.</p>
+        <p>Oztix events are only shown to users searching Australian locations; UK and US users won't see them.</p>
+        <p><a href="https://www.oztix.com.au/">oztix.com.au</a></p>
+
+        <h3 id="ticket-source-attribution">How we credit ticket sources</h3>
+        <p>Every event card in the Discover tab carries a small circular badge in the top-right corner identifying the source platform — Ticketmaster's TM mark, Oztix's logo, etc. The same attribution appears as "via [platform]" text under upcoming events on artist pages. When you tap "Get Tickets," we log the click internally (which platform, the event, your country if known) so we can see which sources drive engagement; this log is private to us.</p>
+
         <!-- 3. SETLISTS -->
         <h2>3. Setlists</h2>
 
