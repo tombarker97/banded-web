@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["7BSCSPUM8M.app.banded.ios"],
+        "components": [
+          {
+            "/": "/u/*",
+            "comment": "Banded profile share links open in the app"
+          }
+        ]
+      }
+    ]
+  }
+}

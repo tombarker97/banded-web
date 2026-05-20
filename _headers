@@ -1,0 +1,3 @@
+# Apple App Site Association must be served as JSON for Universal Links.
+/.well-known/apple-app-site-association
+  Content-Type: application/json
