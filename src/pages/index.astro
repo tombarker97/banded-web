@@ -61,7 +61,7 @@ const description =
   schemas={[organisation, webSite, softwareApplication]}
 >
   <main class="home">
-    <div class="wordmark">Banded</div>
+    <div class="wordmark">banded</div>
     <p class="tagline">The social gig diary. Every show you've ever been to.</p>
 
     <a
@@ -82,11 +82,9 @@ const description =
     <WaitlistForm />
 
     <nav class="discovery-nav" aria-label="Read more">
-      <a href="/blog">Blog</a>
-      <span aria-hidden="true">·</span>
-      <a href="/support">Support</a>
-      <span aria-hidden="true">·</span>
+      <a href="/blog" class="is-primary">Read the blog &rarr;</a>
       <a href="/help">Help articles</a>
+      <a href="/support">Support</a>
     </nav>
   </main>
 
@@ -105,9 +103,12 @@ const description =
   }
 
   .wordmark {
-    font-size: var(--font-size-wordmark);
-    font-weight: 800;
-    letter-spacing: -2px;
+    font-family: "Clash Display", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 96px;
+    font-weight: 700;
+    letter-spacing: -4px;
+    line-height: 0.95;
     margin-bottom: 16px;
     background: var(--gradient-wordmark);
     -webkit-background-clip: text;
@@ -172,26 +173,51 @@ const description =
   }
 
   .discovery-nav {
-    color: var(--color-muted);
-    font-size: var(--font-size-meta);
-    margin-top: 24px;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 8px;
   }
 
   .discovery-nav a {
-    color: var(--color-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-card-border);
+    background: var(--color-card-bg);
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
   }
 
   .discovery-nav a:hover {
-    color: var(--color-text);
+    border-color: var(--color-accent-card-border);
+    background: var(--color-accent-card-bg);
+    color: var(--color-accent-hover);
+    transform: translateY(-1px);
+  }
+
+  .discovery-nav a.is-primary {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  .discovery-nav a.is-primary:hover {
+    background: var(--color-accent-strong);
+    border-color: var(--color-accent-strong);
+    color: #ffffff;
   }
 
   @media (max-width: 480px) {
     .wordmark {
-      font-size: 48px;
+      font-size: 64px;
+      letter-spacing: -3px;
     }
     .tagline {
       font-size: 17px;

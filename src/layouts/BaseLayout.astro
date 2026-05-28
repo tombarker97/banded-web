@@ -73,6 +73,14 @@ const ogImageUrl = ogImage ?? `${site}/og/default.png`;
     <!-- Favicon (using existing image) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Clash Display — used for the brand wordmark only -->
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap"
+    />
+
     {schemas?.map((schema) => <JsonLd schema={schema} />)}
   </head>
   <body class={bodyClass}>
