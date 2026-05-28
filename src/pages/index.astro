@@ -52,7 +52,34 @@ const softwareApplication = {
 
 const title = "Banded — The Social Gig Diary";
 const description =
-  "Banded is the social gig diary. Log every show, rate the experience, and share your live music history. Free on the App Store.";
+  "Your gig diary — like social media for music. Log every show, rate it, share it to socials, remember it forever. Free on the App Store.";
+
+const features = [
+  {
+    title: "Log your gigs",
+    body: "Artist, venue, rating, written review, support acts, the friends you went with.",
+  },
+  {
+    title: "Import your past in seconds",
+    body: "Pull your ticket history from any app — Banded turns a decade of gigs into a proper diary in one go.",
+  },
+  {
+    title: "See what your friends are at",
+    body: "Follow the people you go to gigs with. Their feed, their comments, alerts when there's overlap.",
+  },
+  {
+    title: "Discover tonight's gig",
+    body: "Interactive Gig Map — pinned by venue, filtered by genre, sorted by who's playing. Anywhere you are.",
+  },
+  {
+    title: "Brag, modestly",
+    body: "One-tap polaroid share cards for Instagram Stories. Custom themes, your stats, your photos.",
+  },
+  {
+    title: "Your year in gigs",
+    body: "Every December: top artists, top venues, monthly heatmap, the shows that defined your year.",
+  },
+];
 ---
 
 <BaseLayout
@@ -62,7 +89,8 @@ const description =
 >
   <main class="home">
     <div class="wordmark">banded</div>
-    <p class="tagline">The social gig diary. Every show you've ever been to.</p>
+    <p class="tagline">Your gig diary — like social media for music.</p>
+    <p class="lede">Log every show. Rate it. Share it. Remember it forever.</p>
 
     <a
       class="app-store-badge"
@@ -78,6 +106,21 @@ const description =
       >
       <span><small>Download on the</small>App Store</span>
     </a>
+
+    <section class="features" aria-label="What Banded does">
+      {features.map((f) => (
+        <article class="feature">
+          <h3>{f.title}</h3>
+          <p>{f.body}</p>
+        </article>
+      ))}
+    </section>
+
+    <p class="about-line">
+      <strong>Free forever</strong> — Pro and Backstage unlock detailed Year-in-Review
+      stats, custom share-card themes, and unlimited imports. Made in London by a music
+      fan who wanted a better way to remember his gigs.
+    </p>
 
     <WaitlistForm />
 
@@ -98,7 +141,7 @@ const description =
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 60px 24px;
+    padding: 72px 24px;
     text-align: center;
   }
 
@@ -117,12 +160,61 @@ const description =
   }
 
   .tagline {
-    font-size: 20px;
+    font-size: 22px;
+    color: var(--color-text);
+    max-width: 580px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    text-wrap: balance;
+    font-weight: 500;
+  }
+
+  .lede {
+    font-size: 17px;
     color: var(--color-muted);
     max-width: 520px;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     line-height: 1.5;
     text-wrap: balance;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px 32px;
+    max-width: 920px;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .feature h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 6px;
+    letter-spacing: -0.2px;
+  }
+
+  .feature p {
+    font-size: 14.5px;
+    color: var(--color-body);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .about-line {
+    font-size: 14px;
+    color: var(--color-muted);
+    max-width: 720px;
+    margin-bottom: 48px;
+    line-height: 1.65;
+    text-wrap: balance;
+  }
+
+  .about-line strong {
+    color: var(--color-text);
+    font-weight: 600;
   }
 
   .app-store-badge {
@@ -220,7 +312,13 @@ const description =
       letter-spacing: -3px;
     }
     .tagline {
-      font-size: 17px;
+      font-size: 19px;
+    }
+    .lede {
+      font-size: 16px;
+    }
+    .features {
+      gap: 24px;
     }
   }
 </style>
