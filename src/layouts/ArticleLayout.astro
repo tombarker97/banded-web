@@ -1,0 +1,369 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Footer from "~/components/Footer.astro";
+import Breadcrumb from "~/components/Breadcrumb.astro";
+import FAQ, { type FaqItem } from "~/components/FAQ.astro";
+import type { CollectionEntry } from "astro:content";
+
+type ArticleEntry = CollectionEntry<"blog"> | CollectionEntry<"help">;
+
+interface Props {
+  entry: ArticleEntry;
+  collection: "blog" | "help";
+  related?: ArticleEntry[];
+}
+
+const { entry, collection, related = [] } = Astro.props;
+const { data } = entry;
+
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://banded.uk";
+const articleUrl = `${site}/${collection}/${entry.id}`;
+const ogImage = data.ogImage ?? `${site}/og/${collection}/${entry.id}.png`;
+
+const collectionLabel = collection === "blog" ? "Blog" : "Help";
+const crumbs = [
+  { label: "Home", href: "/" },
+  { label: collectionLabel, href: `/${collection}` },
+  { label: data.title, href: `/${collection}/${entry.id}` },
+];
+
+const schemaType = data.howTo ? "HowTo" : "Article";
+const articleSchema: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": schemaType,
+  headline: data.title,
+  description: data.description,
+  image: ogImage,
+  datePublished: data.publishedAt.toISOString(),
+  dateModified: (data.updatedAt ?? data.publishedAt).toISOString(),
+  url: articleUrl,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": articleUrl,
+  },
+  author: {
+    "@type": "Organization",
+    name: data.author ?? "Banded",
+    url: site,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Banded",
+    url: site,
+    logo: {
+      "@type": "ImageObject",
+      url: `${site}/favicon.svg`,
+    },
+  },
+  keywords: data.keywords?.join(", "),
+};
+
+if (data.howTo && data.howToSteps?.length) {
+  articleSchema.step = data.howToSteps.map((step, idx) => ({
+    "@type": "HowToStep",
+    position: idx + 1,
+    name: step.name,
+    text: step.text,
+  }));
+}
+
+const schemas = [articleSchema];
+---
+
+<BaseLayout
+  title={`${data.title} — Banded`}
+  description={data.description}
+  canonical={articleUrl}
+  ogImage={ogImage}
+  schemas={schemas}
+>
+  <article class="page-container article">
+    <nav class="top-nav">
+      <a href={`/${collection}`}>&larr; {collectionLabel}</a>
+    </nav>
+
+    <Breadcrumb crumbs={crumbs} />
+
+    <header class="article-header">
+      {data.category && <span class="article-category">{data.category}</span>}
+      <h1>{data.title}</h1>
+      {data.description && <p class="article-lede">{data.description}</p>}
+      <p class="article-meta">
+        <time datetime={data.publishedAt.toISOString()}>
+          {data.publishedAt.toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}
+        </time>
+        {data.updatedAt && data.updatedAt > data.publishedAt && (
+          <>
+            <span class="sep">·</span>
+            <span>Updated {data.updatedAt.toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}</span>
+          </>
+        )}
+        {data.readMinutes && (
+          <>
+            <span class="sep">·</span>
+            <span>{data.readMinutes} min read</span>
+          </>
+        )}
+      </p>
+    </header>
+
+    <div class="prose">
+      <slot />
+    </div>
+
+    {data.faqs && data.faqs.length > 0 && (
+      <FAQ faqs={data.faqs as FaqItem[]} heading="FAQs" />
+    )}
+
+    <aside class="what-is-banded">
+      <h2>What is Banded?</h2>
+      <p>
+        Banded is the social gig diary — a free iOS app that lets you log every concert
+        and festival you've been to, rate the performances, share your live music history
+        with friends, and discover new shows nearby. Often described as "Letterboxd for
+        concerts." <a href="https://apps.apple.com/gb/app/banded-gig-diary-discovery/id6761863648">Download on the App Store</a>.
+      </p>
+    </aside>
+
+    {related.length > 0 && (
+      <section class="related">
+        <h2>Related reads</h2>
+        <ul>
+          {related.map((rel) => (
+            <li>
+              <a href={`/${collection}/${rel.id}`}>{rel.data.title}</a>
+              <p>{rel.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <Footer variant="spread" />
+  </article>
+</BaseLayout>
+
+<style>
+  .article {
+    line-height: var(--line-height-prose);
+  }
+
+  .article-header {
+    margin-bottom: 40px;
+  }
+
+  .article-category {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--color-accent);
+    background: rgba(59, 130, 246, 0.12);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .article-header h1 {
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+
+  .article-lede {
+    font-size: 19px;
+    color: var(--color-body);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+
+  .article-meta {
+    color: var(--color-muted);
+    font-size: var(--font-size-meta);
+    margin-bottom: 0;
+  }
+
+  .article-meta .sep {
+    margin: 0 4px;
+  }
+
+  .prose {
+    color: var(--color-body);
+  }
+
+  .prose :global(p),
+  .prose :global(ul),
+  .prose :global(ol) {
+    color: var(--color-body);
+    margin-bottom: 16px;
+  }
+
+  .prose :global(p) {
+    line-height: 1.75;
+  }
+
+  .prose :global(h2) {
+    font-size: var(--font-size-h2);
+    font-weight: 600;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+
+  .prose :global(h3) {
+    font-size: var(--font-size-h3);
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: var(--color-text);
+  }
+
+  .prose :global(blockquote) {
+    border-left: 3px solid var(--color-accent);
+    padding: 8px 20px;
+    margin: 24px 0;
+    background: var(--color-accent-highlight);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    color: var(--color-text);
+    font-style: italic;
+  }
+
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 15px;
+  }
+
+  .prose :global(th),
+  .prose :global(td) {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-divider);
+    color: var(--color-body);
+  }
+
+  .prose :global(th) {
+    color: var(--color-muted);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .prose :global(code) {
+    background: var(--color-card-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.92em;
+    color: var(--color-text);
+  }
+
+  .prose :global(pre) {
+    background: var(--color-card-bg);
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    margin: 24px 0;
+    border: 1px solid var(--color-divider);
+  }
+
+  .prose :global(pre code) {
+    background: transparent;
+    padding: 0;
+  }
+
+  .prose :global(img) {
+    border-radius: var(--radius-sm);
+    margin: 24px 0;
+  }
+
+  .what-is-banded {
+    margin-top: 64px;
+    padding: 28px;
+    background: var(--color-accent-card-bg);
+    border: 1px solid var(--color-accent-card-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .what-is-banded h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+
+  .what-is-banded p {
+    margin-bottom: 0;
+    color: var(--color-body);
+  }
+
+  .related {
+    margin-top: 56px;
+  }
+
+  .related h2 {
+    font-size: var(--font-size-h2);
+    margin-bottom: 20px;
+  }
+
+  .related ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .related ul {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .related li {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+  }
+
+  .related li a {
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 16px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .related li a:hover {
+    color: var(--color-accent);
+  }
+
+  .related li p {
+    color: var(--color-muted);
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    .article-header h1 {
+      font-size: 28px;
+    }
+    .article-lede {
+      font-size: 17px;
+    }
+  }
+</style>

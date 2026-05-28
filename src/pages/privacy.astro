@@ -1,0 +1,370 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Footer from "~/components/Footer.astro";
+
+const title = "Privacy Policy — Banded";
+const description = "Banded Privacy Policy. How we collect, use, and protect your data.";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="page-container">
+    <nav class="top-nav">
+      <a href="/">&larr; Banded</a>
+    </nav>
+
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last updated: May 2026</p>
+
+    <h2>1. Who We Are</h2>
+    <p>Banded is a social gig diary app that lets you log, rate, and share the live music events you attend. Banded is operated from the United Kingdom.</p>
+    <p>If you have any questions about this policy or your data, contact us at <a href="mailto:hello@banded.uk">hello@banded.uk</a>.</p>
+
+    <h2>2. What Data We Collect</h2>
+
+    <h3>2.1 Account Data</h3>
+    <p>When you create an account we collect:</p>
+    <ul>
+      <li><strong>Email address</strong> — used for magic-link sign-in and account communications</li>
+      <li><strong>Apple ID token</strong> — if you choose Sign in with Apple (we receive the identity token Apple provides; we do not access your Apple ID password)</li>
+      <li><strong>Username and display name</strong> — chosen by you during onboarding</li>
+      <li><strong>Profile avatar</strong> — optionally uploaded by you, stored in our cloud storage (see Section 2.5 for details)</li>
+      <li><strong>Bio</strong> — an optional short description you write</li>
+      <li><strong>City</strong> — set during onboarding to personalise event recommendations</li>
+      <li><strong>Genre preferences</strong> — music genres you select to tailor your Discover feed</li>
+      <li><strong>Privacy settings</strong> — whether your profile is public or private, and your default gig visibility preference</li>
+    </ul>
+
+    <h3>2.2 Gig Diary Data</h3>
+    <p>When you log a gig we collect:</p>
+    <ul>
+      <li>Artist name, venue name, city, and country</li>
+      <li>Gig date, tour name, and support acts</li>
+      <li>Ticket price</li>
+      <li>Your ratings (Artist and Venue, each on a 0.5–5 scale)</li>
+      <li>Your written review</li>
+      <li>Genre, festival name, and context tag</li>
+      <li>Visibility setting (public, friends-only, or private)</li>
+      <li>External identifiers linking the gig to third-party databases (Ticketmaster event ID, MusicBrainz artist ID, Spotify artist ID) — these contain no personal data</li>
+    </ul>
+    <p>If you import gigs from screenshots or screen recordings of ticket apps (e.g. DICE, Resident Advisor), Banded creates private "drafts" containing the extracted gig details, the import source (screenshot or screen recording), the originating platform, and a confidence score for the extraction. Drafts are private to you until you publish them as gig logs. The original screenshots and screen recordings stay on your device — only the on-device-extracted text is sent for processing.</p>
+
+    <h3>2.3 Social Data</h3>
+    <ul>
+      <li>Who you follow and who follows you</li>
+      <li>Likes and "also been" reactions you leave on gig posts</li>
+      <li>Comments you write on gig posts, and likes on comments</li>
+      <li>Users you block</li>
+      <li>Comment thread subscriptions (so you receive notifications for replies)</li>
+    </ul>
+
+    <h3>2.4 Wishlist and Events Data</h3>
+    <ul>
+      <li>Artists you add to your wishlist, including whether you have opted in to gig alerts for that artist</li>
+      <li>Upcoming events you save or mark as attending</li>
+      <li>Event metadata sourced from Ticketmaster (artist, venue, date, ticket URL)</li>
+    </ul>
+
+    <h3>2.5 Profile Images</h3>
+    <ul>
+      <li><strong>Profile avatar</strong> — an optional image you upload to display on your profile (max 5 MB; JPEG, PNG, WebP, or HEIC). Stored in our cloud storage.</li>
+      <li><strong>Profile banner</strong> — Banded Pro and Banded Backstage subscribers can upload a custom banner image displayed at the top of their profile. Stored in our cloud storage.</li>
+      <li>If you choose to save share cards to your device camera roll, Banded writes to your photo library but does not read or access existing photos.</li>
+    </ul>
+
+    <h3>2.6 Notification Data</h3>
+    <ul>
+      <li>Your Apple Push Notification service (APNs) device token — used to deliver push notifications to your device</li>
+      <li>Your notification preferences (which types of notifications you have enabled or disabled)</li>
+      <li>A record of notifications sent to you (type, read status, timestamps)</li>
+    </ul>
+
+    <h3>2.7 Location Data</h3>
+    <ul>
+      <li>If you grant location permission, we access your approximate location (accuracy of approximately 100 metres) <strong>only while the app is in use</strong> to show nearby events on the Discover map and to centre the map on your current position</li>
+      <li>Your location is sent to our backend server as latitude and longitude coordinates to query for events within a 30 km radius</li>
+      <li>We do not track your location in the background or store a history of your locations</li>
+    </ul>
+
+    <h3>2.8 Calendar Data</h3>
+    <ul>
+      <li>If you grant calendar permission, Banded can write events to your Apple Calendar (artist, venue, city, date, and time). Banded does not read or access existing calendar events</li>
+    </ul>
+
+    <h3>2.9 Top Four</h3>
+    <ul>
+      <li>You may select up to four gigs as your all-time favourites, displayed on your profile</li>
+    </ul>
+
+    <h3>2.10 Analytics Data</h3>
+    <p>We use Mixpanel to understand how people use Banded so we can improve the app. Mixpanel collects:</p>
+    <ul>
+      <li><strong>Automatic events</strong> — app opens, screen views, and basic interaction events</li>
+      <li><strong>User properties</strong> — your username, display name, and city (linked to your user ID)</li>
+    </ul>
+    <p>Analytics data is processed on Mixpanel's EU servers. We do not use analytics data for advertising or share it with third parties.</p>
+
+    <h3>2.11 Subscription Data</h3>
+    <ul>
+      <li>If you subscribe to Banded Pro or Banded Backstage, we receive your subscription tier and entitlement status from RevenueCat. Payment is handled by Apple via the App Store; we do not see or store your card details, Apple ID password, or full purchase receipt.</li>
+    </ul>
+
+    <h3>2.12 Crash and Performance Data</h3>
+    <ul>
+      <li>If the app crashes or hits a serious error, we collect a crash report containing the stack trace, app version, device model, iOS version, and the breadcrumbs (recent in-app actions) leading up to the crash. This is processed by Sentry and used solely to diagnose and fix bugs. No gig content or other user content is included.</li>
+    </ul>
+
+    <h2>3. What We Do Not Collect</h2>
+    <p>Banded does not collect:</p>
+    <ul>
+      <li>Health or fitness data</li>
+      <li>Credit card or bank details — payment processing for Banded Pro and Backstage is handled entirely by Apple via the App Store; we never see your card number, billing address, or Apple ID credentials</li>
+      <li>Contacts or address book data</li>
+      <li>Browsing history or search history outside the app</li>
+      <li>Precise GPS tracking or background location</li>
+      <li>Audio or video recordings</li>
+    </ul>
+
+    <h2>4. Legal Basis for Processing (UK GDPR)</h2>
+    <p>We process your personal data under the following legal bases:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Legal Basis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account data, gig diary data, social data, wishlist data</td>
+          <td><strong>Contract performance</strong> — necessary to provide the Banded service you signed up for</td>
+        </tr>
+        <tr>
+          <td>Profile images (avatar and banner)</td>
+          <td><strong>Contract performance</strong> — to display your profile to other users; custom banners require a paid Banded Pro or Backstage subscription</td>
+        </tr>
+        <tr>
+          <td>Push notifications and device token</td>
+          <td><strong>Consent</strong> — you choose to enable notifications via the iOS permission prompt; you can revoke this at any time in device settings</td>
+        </tr>
+        <tr>
+          <td>Location data</td>
+          <td><strong>Consent</strong> — you choose to grant location access via the iOS permission prompt; you can revoke this at any time in device settings</td>
+        </tr>
+        <tr>
+          <td>Calendar access</td>
+          <td><strong>Consent</strong> — you choose to grant calendar access; you can revoke this at any time</td>
+        </tr>
+        <tr>
+          <td>Analytics data</td>
+          <td><strong>Legitimate interest</strong> — to understand how the app is used and improve the experience; processed on EU servers</td>
+        </tr>
+        <tr>
+          <td>Crash and performance data</td>
+          <td><strong>Legitimate interest</strong> — to detect and fix bugs that affect app stability</td>
+        </tr>
+        <tr>
+          <td>Subscription data</td>
+          <td><strong>Contract performance</strong> — necessary to provide the paid Banded Pro and Backstage tiers you subscribe to</td>
+        </tr>
+        <tr>
+          <td>Imported gig text (from on-device OCR)</td>
+          <td><strong>Consent</strong> — you choose to import gigs; we process the text Apple Vision extracts on your iPhone, never the original screenshots or recordings</td>
+        </tr>
+        <tr>
+          <td>Ticket affiliate click logs (source platform, event metadata, affiliate flag)</td>
+          <td><strong>Legitimate interest</strong> — to track which affiliate partnerships generate commission revenue, enabling Banded to fund the free tier of the Service</td>
+        </tr>
+        <tr>
+          <td>Non-personalised ad signals (IP-derived location, device type, app ID) — via Google AdMob</td>
+          <td><strong>Legitimate interest</strong> — to display non-personalised advertising in the free tier of the app</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>5. How We Use Your Data</h2>
+    <ul>
+      <li><strong>Account data</strong> — to authenticate you, display your profile to other users (according to your privacy settings), and personalise your experience (event recommendations based on city and genre preferences)</li>
+      <li><strong>Gig diary data</strong> — to store and display your gig history, enable ratings and reviews, and show your activity in friends' feeds</li>
+      <li><strong>Social data</strong> — to enable following, likes, comments, and the "also been" feature; to enforce blocks</li>
+      <li><strong>Wishlist and events data</strong> — to show you upcoming events for artists you are interested in and to send gig alerts when a wishlisted artist announces a show</li>
+      <li><strong>Profile images</strong> — to display your profile avatar to other users, and (for Banded Pro and Backstage subscribers) your custom profile banner</li>
+      <li><strong>Notification data</strong> — to send you push notifications about activity on your posts (likes, comments, new followers), wishlist artist alerts, and show-time reminders</li>
+      <li><strong>Location data</strong> — to find and display nearby upcoming events on the Discover map</li>
+      <li><strong>Calendar data</strong> — to add upcoming gigs you have saved to your Apple Calendar with a 30-minute reminder</li>
+    </ul>
+
+    <h2 id="affiliate-advertising">6. Third-Party Services</h2>
+    <p>Banded uses the following third-party services. For each service, we describe what data (if any) is shared and why.</p>
+    <p><strong>Ticket click-throughs and affiliate links:</strong> When you tap "Get Tickets" on a Discover event, you are redirected to the third-party ticketing platform. We log the click internally — the source platform, event metadata, and your country if known — for our own analytics on which platforms drive engagement. This click log is not shared with the third-party platform. Once you arrive on the third-party site, that platform can see standard browser information (IP address, device user agent, referrer) per the normal web behaviour of any link click.</p>
+    <p>Some ticket purchase links in Banded include affiliate tracking parameters. When you follow such a link, the ticketing platform receives a referral identifier that allows it to attribute any completed purchase to Banded. Banded may earn a commission on purchases completed via these links. Where an affiliate link is in use, this is disclosed to you in the app at the point of the link.</p>
+
+    <h3>6.1 Supabase</h3>
+    <p><strong>Purpose:</strong> Database, user authentication, and file storage (profile avatars and Pro/Backstage banners).</p>
+    <p><strong>Data shared:</strong> All user data described in this policy is stored in Supabase. Authentication tokens (JWT) are managed by Supabase.</p>
+    <p><strong>Location:</strong> Supabase infrastructure may be hosted in the EU or US. See Section 9 (International Data Transfers) below.</p>
+    <p><a href="https://supabase.com/privacy">Supabase Privacy Policy</a></p>
+
+    <h3>6.2 Ticketmaster Discovery API</h3>
+    <p><strong>Purpose:</strong> To search for upcoming events, retrieve event details, and fetch artist images.</p>
+    <p><strong>Data shared:</strong> Search parameters only — artist name, city or approximate location coordinates, date range, and genre filters. No account data or personal information is sent to Ticketmaster.</p>
+    <p><a href="https://www.ticketmaster.co.uk/privacy">Ticketmaster Privacy Policy</a></p>
+
+    <h3>6.3 MusicBrainz</h3>
+    <p><strong>Purpose:</strong> To look up artist metadata such as biography, origin, genres, and active years.</p>
+    <p><strong>Data shared:</strong> Artist name or MusicBrainz ID only. No user data is sent.</p>
+    <p><a href="https://musicbrainz.org/doc/About/Privacy_Policy">MusicBrainz Privacy Policy</a></p>
+
+    <h3>6.4 Setlist.fm</h3>
+    <p><strong>Purpose:</strong> To retrieve recent setlists for an artist, displayed on the artist page in Banded so you can see what they've been playing live. Setlist data is not stored against your gig logs.</p>
+    <p><strong>Data shared:</strong> Artist name only. No user data is sent.</p>
+    <p><a href="https://www.setlist.fm/help/terms">Setlist.fm Terms of Use</a></p>
+
+    <h3>6.5 Fanart.tv</h3>
+    <p><strong>Purpose:</strong> Fallback source for artist images when Ticketmaster images are unavailable.</p>
+    <p><strong>Data shared:</strong> MusicBrainz artist ID only. No user data is sent.</p>
+    <p><a href="https://fanart.tv/terms-of-service/">Fanart.tv Terms of Service</a></p>
+
+    <h3>6.6 Wikidata and Wikimedia Commons</h3>
+    <p><strong>Purpose:</strong> Fallback source for artist images.</p>
+    <p><strong>Data shared:</strong> Wikidata entity ID only. No user data is sent.</p>
+    <p><a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy">Wikimedia Privacy Policy</a></p>
+
+    <h3>6.7 Mixpanel</h3>
+    <p><strong>Purpose:</strong> Product analytics — to understand how users interact with Banded so we can improve the app experience.</p>
+    <p><strong>Data shared:</strong> Your user ID (UUID), username, display name, and city. Mixpanel also collects automatic interaction events (app opens, screen views). No gig diary content or social data is sent to Mixpanel.</p>
+    <p><strong>Location:</strong> Data is sent to Mixpanel's EU servers (<code>api-eu.mixpanel.com</code>).</p>
+    <p><a href="https://mixpanel.com/legal/privacy-policy/">Mixpanel Privacy Policy</a></p>
+
+    <h3>6.8 Apple Services</h3>
+    <ul>
+      <li><strong>Sign in with Apple</strong> — used for account authentication. Apple provides us with an identity token; we do not receive your Apple ID password. <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a></li>
+      <li><strong>Apple Push Notification service (APNs)</strong> — used to deliver push notifications to your device. We send your device token and notification content to Apple's servers.</li>
+      <li><strong>Apple Music API</strong> — used to retrieve artist images, editorial biographies, and short song previews. Search parameters (artist name) only are sent; no user data.</li>
+      <li><strong>Apple MapKit</strong> — used to display maps and search for venues within the app. MapKit runs locally on your device; map tile requests are handled by Apple.</li>
+      <li><strong>Apple EventKit</strong> — used to write events to your Apple Calendar. This runs locally on your device; no calendar data is sent to our servers.</li>
+      <li><strong>Apple StoreKit</strong> — used to process in-app purchases for Banded Pro and Backstage subscriptions. Apple handles all payment details; Banded receives only an entitlement confirmation via RevenueCat.</li>
+    </ul>
+
+    <h3>6.9 RevenueCat</h3>
+    <p><strong>Purpose:</strong> Manages in-app subscription state for Banded Pro and Banded Backstage, including entitlement checks and receipt validation.</p>
+    <p><strong>Data shared:</strong> Your user ID (UUID), subscription tier, and the App Store receipt necessary to validate your entitlement. Payment information itself is handled exclusively by Apple via StoreKit and is not shared with RevenueCat or Banded.</p>
+    <p><a href="https://www.revenuecat.com/privacy">RevenueCat Privacy Policy</a></p>
+
+    <h3>6.10 Sentry</h3>
+    <p><strong>Purpose:</strong> Crash reporting and performance monitoring — to detect and diagnose app crashes and serious errors so we can fix them.</p>
+    <p><strong>Data shared:</strong> When a crash or serious error occurs, Sentry receives the stack trace, app version, device model, iOS version, and breadcrumbs (a short trail of recent in-app actions). No gig content, message content, or precise location data is included.</p>
+    <p><a href="https://sentry.io/privacy/">Sentry Privacy Policy</a></p>
+
+    <h3>6.11 Anthropic (Claude)</h3>
+    <p><strong>Purpose:</strong> When you use the gig import feature with screenshots or screen recordings of ticket apps (such as DICE or Resident Advisor), text is read from those images by Apple's Vision framework on your iPhone, and that text is then sent to Anthropic's Claude API to be parsed into structured gig details (artist, venue, date, etc.).</p>
+    <p><strong>Data shared:</strong> Only the text that Apple's on-device Vision framework extracts from your imported screenshots or screen recordings. The screenshots and recordings themselves never leave your device. Anthropic does not use Banded's API requests to train its models, in line with the Anthropic Commercial Terms of Service.</p>
+    <p><a href="https://www.anthropic.com/legal/privacy">Anthropic Privacy Policy</a></p>
+
+    <h3>6.12 Cloudflare Turnstile</h3>
+    <p><strong>Purpose:</strong> A privacy-respecting CAPTCHA used to protect Banded's email/password sign-up, sign-in, and password-reset endpoints from automated abuse. Sign-in with Apple bypasses this check.</p>
+    <p><strong>Data shared:</strong> A challenge token issued by Cloudflare. Cloudflare may collect basic device and network signals as part of the challenge; it does not use behavioural biometrics or third-party cookies.</p>
+    <p><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></p>
+
+    <h3>6.13 Cookies and similar technologies</h3>
+    <p>The Banded iOS app does not use web cookies. The Banded marketing site (banded.uk) does not set first-party cookies for marketing or analytics. Cloudflare's edge platform may set short-lived security cookies (such as <code>__cf_bm</code>) on the website to detect bots, and Cloudflare Turnstile may set a challenge cookie when verifying email/password sign-up, sign-in, or password-reset attempts. These are essential security cookies and are not used to track you across sites or build an advertising profile.</p>
+    <p>Where Banded uses affiliate ticket links, those links may contain a referral or tracking parameter (such as an affiliate ID appended to the URL). No cookies are set by Banded in this process, but the destination ticketing platform may set its own cookies upon your arrival, subject to its own cookie policy. Banded does not receive any data about your browsing or purchase behaviour after you leave the app; we receive only an aggregate commission report from the affiliate network if a qualifying purchase is completed.</p>
+
+    <h3>6.14 Google AdMob</h3>
+    <p><strong>Purpose:</strong> To display non-personalised advertisements within the app. Non-personalised ads (NPA) do not use behavioural profiling or your prior browsing history to select ads.</p>
+    <p><strong>Data shared:</strong> Google AdMob collects limited, non-personal signals to serve NPA — including your approximate location (derived from IP address), device type, operating system version, and the app's identifier in the App Store. These signals are used for ad selection by content type and geography (not by individual profile), fraud detection, frequency capping, and aggregate reporting. Banded does not share your user ID, email address, or any gig diary content with Google AdMob.</p>
+    <p><strong>Legal basis:</strong> Legitimate interest — to fund the free tier of the Service without requiring a subscription. Banded's ads are non-personalised by default and do not require or use Apple's Advertising Identifier (IDFA). You can opt out of personalised ads at any time via iOS Settings &rarr; Privacy &amp; Security &rarr; Apple Advertising (though this has no effect on NPA, which does not use the IDFA).</p>
+    <p><a href="https://policies.google.com/privacy">Google Privacy Policy</a> &middot; <a href="https://support.google.com/admob/answer/6128543">Google AdMob data disclosure</a></p>
+
+    <h2>7. Data Retention</h2>
+    <p>We retain your data for as long as your account is active and you continue to use Banded.</p>
+    <ul>
+      <li><strong>Account deletion:</strong> When you delete your account (via Profile &rarr; Settings &rarr; Account &rarr; Delete Account), all your personal data is permanently removed from our database, including your profile (and any avatar or banner you've uploaded), gig logs, comments, likes, follows, wishlist entries, and notification tokens. This action cannot be undone.</li>
+      <li><strong>Profile images:</strong> Profile avatars and banners stored in our cloud storage are deleted when your account is deleted.</li>
+      <li><strong>Push tokens:</strong> Your device token is removed from our database when you sign out or delete your account.</li>
+      <li><strong>Backups:</strong> Deleted data may persist in encrypted database backups for up to 30 days before being permanently purged.</li>
+    </ul>
+
+    <h2>8. Your Rights Under UK GDPR</h2>
+    <p>As a user in the United Kingdom, you have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Right of access</strong> — You can request a copy of all personal data we hold about you.</li>
+      <li><strong>Right to rectification</strong> — You can ask us to correct any inaccurate or incomplete data. You can also update most of your data directly in the app (profile, gig logs, reviews).</li>
+      <li><strong>Right to erasure ("right to be forgotten")</strong> — You can request that we delete your personal data. The simplest way to do this is to delete your account in the app. You can also email us to request deletion.</li>
+      <li><strong>Right to restrict processing</strong> — You can ask us to temporarily stop processing your data in certain circumstances.</li>
+      <li><strong>Right to data portability</strong> — You can request your data in a structured, commonly used, machine-readable format.</li>
+      <li><strong>Right to object</strong> — You can object to processing of your data where we rely on legitimate interest as the legal basis.</li>
+    </ul>
+    <div class="highlight">
+      <p>To exercise any of these rights, email us at <a href="mailto:hello@banded.uk">hello@banded.uk</a>. We will respond within one month as required by law. If your request is complex, we may extend this by a further two months and will let you know.</p>
+    </div>
+    <p>You also have the right to lodge a complaint with the <a href="https://ico.org.uk/">Information Commissioner's Office (ICO)</a>, the UK's supervisory authority for data protection.</p>
+
+    <h2>9. International Data Transfers</h2>
+    <p>Banded uses Supabase as its backend infrastructure provider. Supabase may process and store data on servers located outside the United Kingdom, including in the United States and the European Union.</p>
+    <p>Where data is transferred outside the UK, we ensure appropriate safeguards are in place, including:</p>
+    <ul>
+      <li>Standard Contractual Clauses (SCCs) approved by the UK government</li>
+      <li>Transfers to countries recognised by the UK as providing an adequate level of data protection</li>
+    </ul>
+    <p>Third-party music data services (Ticketmaster, MusicBrainz, Setlist.fm, Fanart.tv, Wikimedia, Apple Music) may process API requests on servers located worldwide. However, no personal user data is sent to these services — only search parameters such as artist names, locations, and dates. RevenueCat, Sentry, and Anthropic process data on infrastructure that may be located in the United States; their privacy policies (linked above) describe the safeguards in place.</p>
+
+    <h2>10. Children's Privacy</h2>
+    <p>Banded is not directed at children under the age of 13. We do not knowingly collect personal data from children under 13. If you believe a child under 13 has created an account, please contact us at <a href="mailto:hello@banded.uk">hello@banded.uk</a> and we will promptly delete the account and associated data.</p>
+
+    <h2>11. Apple App Store Privacy Disclosures</h2>
+    <p>In accordance with Apple's App Store requirements, here is a summary of the data Banded collects and its purpose:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Collected</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Contact Info (email)</td><td>Yes</td><td>Authentication, account recovery</td></tr>
+        <tr><td>Identifiers (user ID)</td><td>Yes</td><td>App functionality</td></tr>
+        <tr><td>Identifiers (device ID)</td><td>Yes</td><td>Push notifications (APNs token)</td></tr>
+        <tr><td>User Content (reviews, ratings, profile images)</td><td>Yes</td><td>App functionality</td></tr>
+        <tr><td>Location (coarse)</td><td>Yes</td><td>Nearby event discovery</td></tr>
+        <tr><td>Health &amp; Fitness</td><td>No</td><td>—</td></tr>
+        <tr><td>Financial Info</td><td>No</td><td>—</td></tr>
+        <tr><td>Sensitive Info</td><td>No</td><td>—</td></tr>
+        <tr><td>Contacts</td><td>No</td><td>—</td></tr>
+        <tr><td>Browsing History</td><td>No</td><td>—</td></tr>
+        <tr><td>Search History</td><td>No</td><td>—</td></tr>
+        <tr><td>Usage Data (app interactions)</td><td>Yes</td><td>Analytics (Mixpanel)</td></tr>
+        <tr><td>Diagnostics (crashes, performance)</td><td>Yes</td><td>App stability (Sentry)</td></tr>
+        <tr><td>Purchases</td><td>Yes</td><td>Subscription entitlement (RevenueCat / Apple StoreKit)</td></tr>
+        <tr><td>Advertising Data</td><td>Yes — once in-app advertising is enabled</td><td>Non-personalised in-app advertising (Google AdMob)</td></tr>
+      </tbody>
+    </table>
+    <p>Banded does not currently use any data for tracking purposes as defined by Apple, and we do not share your data with data brokers. Once in-app advertising via Google AdMob is enabled, advertising-related signals (device type, IP-derived location, app ID) will be processed by Google. This will not involve Apple's Advertising Identifier (IDFA) and does not constitute "tracking" under Apple's App Tracking Transparency framework.</p>
+
+    <h2>12. Data Security</h2>
+    <p>We take reasonable measures to protect your personal data:</p>
+    <ul>
+      <li>All data is transmitted over HTTPS (TLS encryption in transit)</li>
+      <li>Database access is protected by row-level security policies, ensuring users can only access their own data or data that has been made public</li>
+      <li>Authentication tokens are short-lived JWTs with automatic refresh</li>
+      <li>API endpoints are rate-limited to prevent abuse</li>
+      <li>Backend API keys for third-party services are stored securely on the server and are never exposed to the app</li>
+    </ul>
+
+    <h2>13. Changes to This Policy</h2>
+    <p>We may update this privacy policy from time to time. If we make material changes, we will notify you by:</p>
+    <ul>
+      <li>Posting the updated policy on this page with a new "Last updated" date</li>
+      <li>Sending a notification within the app for significant changes</li>
+    </ul>
+    <p>We encourage you to review this page periodically.</p>
+
+    <h2>14. Contact Us</h2>
+    <p>If you have any questions, concerns, or requests regarding this privacy policy or your personal data, please contact us:</p>
+    <div class="highlight">
+      <p><strong>Email:</strong> <a href="mailto:hello@banded.uk">hello@banded.uk</a></p>
+    </div>
+
+    <Footer variant="spread" />
+  </div>
+</BaseLayout>

@@ -1,0 +1,219 @@
+/* Banded design tokens — CSS custom properties shared across every page. */
+
+:root {
+  /* Colours */
+  --color-bg: #080810;
+  --color-text: #ffffff;
+  --color-body: #c8d1e0;
+  --color-muted: #8b9dc3;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #60a5fa;
+  --color-accent-strong: #2563eb;
+  --color-success: #4ade80;
+  --color-error: #f87171;
+
+  --color-card-bg: rgba(139, 157, 195, 0.06);
+  --color-card-border: rgba(139, 157, 195, 0.15);
+  --color-accent-card-bg: rgba(59, 130, 246, 0.06);
+  --color-accent-card-border: rgba(59, 130, 246, 0.15);
+  --color-accent-highlight: rgba(59, 130, 246, 0.08);
+  --color-divider: rgba(139, 157, 195, 0.15);
+  --color-divider-soft: rgba(139, 157, 195, 0.1);
+  --color-input-bg: rgba(255, 255, 255, 0.05);
+  --color-input-border: rgba(139, 157, 195, 0.25);
+
+  /* Typography */
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --font-size-wordmark: 64px;
+  --font-size-h1: 32px;
+  --font-size-h2: 22px;
+  --font-size-h3: 17px;
+  --font-size-body: 16px;
+  --font-size-meta: 14px;
+  --font-size-small: 13px;
+  --line-height-tight: 1.5;
+  --line-height-base: 1.6;
+  --line-height-prose: 1.75;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --container-narrow: 720px;
+  --container-wide: 980px;
+
+  /* Brand */
+  --gradient-wordmark: linear-gradient(135deg, #ffffff 0%, #8b9dc3 100%);
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-stack);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Page shell used by long-form content pages (privacy, terms, articles, etc.) */
+.page-container {
+  flex: 1;
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+  line-height: var(--line-height-prose);
+}
+
+.page-container p {
+  color: var(--color-body);
+  margin-bottom: 16px;
+}
+
+.page-container h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.page-container h2 {
+  font-size: var(--font-size-h2);
+  font-weight: 600;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+.page-container h3 {
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+  margin-top: 28px;
+  margin-bottom: 10px;
+  color: var(--color-text);
+}
+
+.page-container ul,
+.page-container ol {
+  color: var(--color-body);
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+.page-container li {
+  margin-bottom: 8px;
+}
+
+.page-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.page-container th,
+.page-container td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-divider);
+  color: var(--color-body);
+  font-size: 15px;
+}
+
+.page-container th {
+  color: var(--color-muted);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.page-container .top-nav {
+  margin-bottom: 48px;
+}
+
+.page-container .top-nav a {
+  color: var(--color-muted);
+  font-size: var(--font-size-meta);
+}
+
+.page-container .top-nav a:hover {
+  color: var(--color-text);
+}
+
+.page-container .last-updated {
+  color: var(--color-muted);
+  font-size: var(--font-size-meta);
+  margin-bottom: 48px;
+}
+
+.highlight {
+  background: var(--color-accent-highlight);
+  border-left: 3px solid var(--color-accent);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 24px 0;
+}
+
+.highlight p {
+  margin-bottom: 0;
+}
+
+.card-accent {
+  background: var(--color-accent-card-bg);
+  border: 1px solid var(--color-accent-card-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 48px;
+}
+
+.card-muted {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 40px 18px 60px;
+  }
+  .page-container h1 {
+    font-size: 26px;
+  }
+  .page-container h2 {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,185 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Footer from "~/components/Footer.astro";
+import FAQ, { type FaqItem } from "~/components/FAQ.astro";
+import ArticleCard from "~/components/ArticleCard.astro";
+
+const title = "Support — Banded";
+const description = "Banded Support. Get help with the Banded social gig diary app.";
+
+const faqs: FaqItem[] = [
+  {
+    question: "How do I log a gig?",
+    answer:
+      "Tap the Log tab (the + icon) in the tab bar, search for the artist, fill in the details — venue, date, ratings, and an optional review — then tap Save. Your gig will appear in your diary and, if set to public, in your followers' feeds.",
+  },
+  {
+    question: "Can I log gigs I went to in the past?",
+    answer:
+      'Yes — you can log any gig regardless of when it happened. Just select the correct date when logging. There\'s no limit on how far back you can go, so feel free to build up your full gig history. See <a href="/help/log-a-past-gig">our guide on logging past gigs</a> for the full walk-through.',
+  },
+  {
+    question: "How do I find and follow friends?",
+    answer:
+      "Use the Search tab to search for users by username. Tap their profile and tap Follow. You'll then see their public gig logs in your feed.",
+  },
+  {
+    question: "How do I change my genre preferences?",
+    answer:
+      "Go to Profile → Settings → Genre Preferences to update the genres used to personalise your Discover feed. Your recommendations will update immediately.",
+  },
+  {
+    question: "How do I delete my account?",
+    answer:
+      "Go to Profile → Settings → Account → Delete Account. This permanently removes all your data — your profile (and any avatar or banner you've uploaded), gig logs, comments, follows, and everything else. This action cannot be undone.",
+  },
+  {
+    question: "How do I report a user?",
+    answer:
+      "Tap the three-dot menu on any post or profile and select Report. We review all reports and take action where our community guidelines are breached.",
+  },
+  {
+    question: "How do I share my gig to Instagram?",
+    answer:
+      'Open any logged gig from your diary, tap the share icon, and select "Share to Instagram Stories". Banded creates a ticket-stub style share card with your gig details that you can post directly to your story. <a href="/help/share-to-instagram">See the full guide</a>.',
+  },
+  {
+    question: "How do I cancel Banded Pro?",
+    answer:
+      "Go to iPhone Settings → your name (Apple ID) → Subscriptions → Banded Pro → Cancel Subscription. Your Pro features will remain active until the end of the current billing period.",
+  },
+  {
+    question:
+      "I'm an artist — why am I not in search, or why is my photo wrong?",
+    answer:
+      'Banded doesn\'t host its own artist database — artist search results come from MusicBrainz, and artist photos come from Apple Music. That means artists can\'t be added or edited from inside Banded. If you\'re a performer who isn\'t showing up in search, or your photo isn\'t right, update it at the source: add or correct your MusicBrainz listing to appear in search, and set the right image on your Apple Music artist profile. Banded picks up changes from the source automatically, though it can take a little while to refresh. If you\'ve done that and it still looks wrong, email <a href="mailto:support@banded.uk">support@banded.uk</a> and we\'ll help.',
+  },
+  {
+    question: "I found a bug — how do I report it?",
+    answer:
+      'Email <a href="mailto:support@banded.uk">support@banded.uk</a> with a description of what happened, what you expected to happen, and your iPhone model and iOS version. Screenshots or screen recordings are really helpful if you can include them.',
+  },
+];
+
+// Pull non-draft help articles ordered by published date desc.
+const helpArticles = (await getCollection("help", ({ data }) => !data.draft))
+  .sort(
+    (a, b) =>
+      (b.data.publishedAt?.getTime() ?? 0) - (a.data.publishedAt?.getTime() ?? 0),
+  );
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="page-container">
+    <nav class="top-nav">
+      <a href="/">&larr; Banded</a>
+    </nav>
+
+    <h1>Support</h1>
+    <p class="subtitle">We're here to help</p>
+
+    <div class="contact-card">
+      <h2>Get in Touch</h2>
+      <a href="mailto:support@banded.uk" class="contact-email">support@banded.uk</a>
+      <p class="response-time">We aim to respond within 48 hours.</p>
+    </div>
+
+    {helpArticles.length > 0 && (
+      <section class="help-articles">
+        <h2>Help articles</h2>
+        <p class="help-intro">Step-by-step guides for the most common things people ask us.</p>
+        <div class="card-grid">
+          {helpArticles.map((article) => (
+            <ArticleCard
+              href={`/help/${article.id}`}
+              title={article.data.title}
+              description={article.data.description}
+              category={article.data.category}
+              readTime={article.data.readMinutes ? `${article.data.readMinutes} min read` : undefined}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <FAQ faqs={faqs} heading="Frequently Asked Questions" />
+
+    <div class="privacy-section">
+      <h2>Your Privacy</h2>
+      <p>Your privacy matters to us. We only collect data that's necessary to provide the Banded experience, and we never sell your data to third parties. Read our full <a href="/privacy">Privacy Policy</a> for details on how we handle your information.</p>
+    </div>
+
+    <Footer variant="spread" />
+  </div>
+</BaseLayout>
+
+<style>
+  .subtitle {
+    color: var(--color-muted);
+    font-size: 18px;
+    margin-bottom: 48px;
+  }
+
+  .contact-card {
+    background: var(--color-accent-card-bg);
+    border: 1px solid var(--color-accent-card-border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    margin-bottom: 48px;
+  }
+
+  .contact-card h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  .contact-email {
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .response-time {
+    color: var(--color-muted);
+    font-size: 14px;
+  }
+
+  .help-articles {
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+
+  .help-articles h2 {
+    margin-top: 0;
+  }
+
+  .help-intro {
+    margin-bottom: 24px;
+  }
+
+  .card-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .card-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .privacy-section {
+    background: var(--color-card-bg);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    margin-top: 48px;
+  }
+
+  .privacy-section h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+</style>

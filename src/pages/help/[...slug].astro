@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from "astro:content";
+import ArticleLayout from "~/layouts/ArticleLayout.astro";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("help", ({ data }) => !data.draft);
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+
+const allArticles = await getCollection("help", ({ data }) => !data.draft);
+const ownKeywords = new Set(article.data.keywords ?? []);
+
+const related = allArticles
+  .filter((p) => p.id !== article.id)
+  .map((p) => ({
+    post: p,
+    overlap: (p.data.keywords ?? []).filter((k) => ownKeywords.has(k)).length,
+  }))
+  .sort((a, b) => {
+    if (b.overlap !== a.overlap) return b.overlap - a.overlap;
+    return (
+      (b.post.data.publishedAt?.getTime() ?? 0) -
+      (a.post.data.publishedAt?.getTime() ?? 0)
+    );
+  })
+  .slice(0, 3)
+  .map((x) => x.post);
+---
+
+<ArticleLayout entry={article} collection="help" related={related}>
+  <Content />
+</ArticleLayout>

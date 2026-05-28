@@ -1,0 +1,15 @@
+---
+interface Props {
+  schema: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { schema } = Astro.props;
+
+const serialised = JSON.stringify(schema)
+  // Defensive: prevent breaking out of the inline <script> tag if a value ever
+  // contains "</script". (Astro escapes by default, but this is the canonical
+  // safety net for JSON-LD blocks.)
+  .replace(/</g, "\\u003c");
+---
+
+<script type="application/ld+json" is:inline set:html={serialised} />

@@ -1,0 +1,103 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Footer from "~/components/Footer.astro";
+import Breadcrumb from "~/components/Breadcrumb.astro";
+import ArticleCard from "~/components/ArticleCard.astro";
+
+const title = "Blog — Banded";
+const description =
+  "Long-form pieces from Banded — guides to tracking concerts, comparisons of gig-tracking apps, and the case for keeping a gig diary.";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) =>
+    (b.data.publishedAt?.getTime() ?? 0) - (a.data.publishedAt?.getTime() ?? 0),
+);
+
+const crumbs = [
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog" },
+];
+
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://banded.uk";
+const collectionPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Banded Blog",
+  url: `${site}/blog`,
+  description,
+  publisher: { "@type": "Organization", name: "Banded", url: site },
+  blogPost: posts.map((p) => ({
+    "@type": "BlogPosting",
+    headline: p.data.title,
+    url: `${site}/blog/${p.id}`,
+    datePublished: p.data.publishedAt.toISOString(),
+  })),
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schemas={[collectionPageSchema]}
+>
+  <div class="page-container">
+    <nav class="top-nav">
+      <a href="/">&larr; Banded</a>
+    </nav>
+
+    <Breadcrumb crumbs={crumbs} />
+
+    <h1>Blog</h1>
+    <p class="subtitle">
+      Guides, comparisons, and thinking out loud about live music — from the team building
+      Banded.
+    </p>
+
+    {posts.length === 0 ? (
+      <p class="empty">No posts yet — check back soon.</p>
+    ) : (
+      <div class="card-grid">
+        {posts.map((post) => (
+          <ArticleCard
+            href={`/blog/${post.id}`}
+            title={post.data.title}
+            description={post.data.description}
+            category={post.data.category}
+            readTime={
+              post.data.readMinutes ? `${post.data.readMinutes} min read` : undefined
+            }
+          />
+        ))}
+      </div>
+    )}
+
+    <Footer variant="spread" />
+  </div>
+</BaseLayout>
+
+<style>
+  .subtitle {
+    color: var(--color-muted);
+    font-size: 18px;
+    margin-bottom: 40px;
+    text-wrap: balance;
+  }
+
+  .card-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .card-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .empty {
+    color: var(--color-muted);
+    padding: 24px 0;
+  }
+</style>

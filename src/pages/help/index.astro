@@ -1,0 +1,85 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Footer from "~/components/Footer.astro";
+import Breadcrumb from "~/components/Breadcrumb.astro";
+import ArticleCard from "~/components/ArticleCard.astro";
+
+const title = "Help articles — Banded";
+const description =
+  "Step-by-step help articles for the Banded gig diary app — logging gigs, sharing share cards, planning festivals, and more.";
+
+const articles = (await getCollection("help", ({ data }) => !data.draft)).sort(
+  (a, b) =>
+    (b.data.publishedAt?.getTime() ?? 0) - (a.data.publishedAt?.getTime() ?? 0),
+);
+
+const crumbs = [
+  { label: "Home", href: "/" },
+  { label: "Help", href: "/help" },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="page-container">
+    <nav class="top-nav">
+      <a href="/support">&larr; Support</a>
+    </nav>
+
+    <Breadcrumb crumbs={crumbs} />
+
+    <h1>Help articles</h1>
+    <p class="subtitle">
+      Step-by-step guides to using Banded. Looking for FAQs? See
+      <a href="/support">Support</a>.
+    </p>
+
+    {articles.length === 0 ? (
+      <p class="empty">No help articles yet — check back soon.</p>
+    ) : (
+      <div class="card-grid">
+        {articles.map((article) => (
+          <ArticleCard
+            href={`/help/${article.id}`}
+            title={article.data.title}
+            description={article.data.description}
+            category={article.data.category}
+            readTime={
+              article.data.readMinutes
+                ? `${article.data.readMinutes} min read`
+                : undefined
+            }
+          />
+        ))}
+      </div>
+    )}
+
+    <Footer variant="spread" />
+  </div>
+</BaseLayout>
+
+<style>
+  .subtitle {
+    color: var(--color-muted);
+    font-size: 18px;
+    margin-bottom: 40px;
+    text-wrap: balance;
+  }
+
+  .card-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .card-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .empty {
+    color: var(--color-muted);
+    padding: 24px 0;
+  }
+</style>

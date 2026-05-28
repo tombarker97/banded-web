@@ -1,0 +1,111 @@
+---
+import JsonLd from "./JsonLd.astro";
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FaqItem[];
+  emitSchema?: boolean;
+  heading?: string;
+}
+
+const { faqs, emitSchema = true, heading } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.answer,
+    },
+  })),
+};
+---
+
+{heading && <h2 class="faq-heading">{heading}</h2>}
+
+<div class="faq-list">
+  {
+    faqs.map((faq) => (
+      <details>
+        <summary>{faq.question}</summary>
+        <div class="answer" set:html={faq.answer} />
+      </details>
+    ))
+  }
+</div>
+
+{emitSchema && <JsonLd schema={schema} />}
+
+<style>
+  .faq-heading {
+    font-size: var(--font-size-h2);
+    font-weight: 600;
+    margin-top: 48px;
+    margin-bottom: 20px;
+  }
+
+  .faq-list details {
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .faq-list details:first-of-type {
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .faq-list summary {
+    padding: 18px 0;
+    font-size: var(--font-size-body);
+    font-weight: 500;
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s;
+  }
+
+  .faq-list summary:hover {
+    color: var(--color-accent);
+  }
+
+  .faq-list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-list summary::after {
+    content: "+";
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--color-muted);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+
+  .faq-list details[open] summary::after {
+    content: "\2212";
+  }
+
+  .faq-list .answer {
+    padding: 0 0 20px;
+    color: var(--color-body);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .faq-list .answer :global(a) {
+    color: var(--color-accent);
+  }
+
+  .faq-list .answer :global(a:hover) {
+    color: var(--color-accent-hover);
+  }
+</style>

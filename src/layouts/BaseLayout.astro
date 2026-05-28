@@ -1,0 +1,81 @@
+---
+import "~/styles/tokens.css";
+import JsonLd from "~/components/JsonLd.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Override the canonical for this page (defaults to current URL). */
+  canonical?: string;
+  /** Override the OG image (defaults to the home OG image). */
+  ogImage?: string;
+  /** Tells search engines not to index. */
+  noindex?: boolean;
+  /** Optional extra JSON-LD schema(s) injected into <head>. */
+  schemas?: Record<string, unknown>[];
+  /** Pass-through to <body class>. */
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  noindex,
+  schemas,
+  bodyClass,
+} = Astro.props;
+
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://banded.uk";
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site).toString();
+const ogImageUrl = ogImage ?? `${site}/og/default.png`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Banded" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- App Store / iOS deep-link affordance -->
+    <meta
+      name="apple-itunes-app"
+      content="app-id=6761863648, app-argument=https://banded.uk"
+    />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Banded — Blog"
+      href="/rss.xml"
+    />
+
+    <!-- Favicon (using existing image) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {schemas?.map((schema) => <JsonLd schema={schema} />)}
+  </head>
+  <body class={bodyClass}>
+    <slot />
+  </body>
+</html>

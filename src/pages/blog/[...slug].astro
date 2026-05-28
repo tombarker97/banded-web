@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from "astro:content";
+import ArticleLayout from "~/layouts/ArticleLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Pick up to 3 related articles based on shared keywords, falling back to most recent.
+const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+const ownKeywords = new Set(post.data.keywords ?? []);
+
+const related = allPosts
+  .filter((p) => p.id !== post.id)
+  .map((p) => {
+    const overlap = (p.data.keywords ?? []).filter((k) => ownKeywords.has(k))
+      .length;
+    return { post: p, overlap };
+  })
+  .sort((a, b) => {
+    if (b.overlap !== a.overlap) return b.overlap - a.overlap;
+    return (
+      (b.post.data.publishedAt?.getTime() ?? 0) -
+      (a.post.data.publishedAt?.getTime() ?? 0)
+    );
+  })
+  .slice(0, 3)
+  .map((x) => x.post);
+---
+
+<ArticleLayout entry={post} collection="blog" related={related}>
+  <Content />
+</ArticleLayout>

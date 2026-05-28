@@ -1,0 +1,94 @@
+---
+type Variant = "centered" | "spread";
+
+interface Props {
+  variant?: Variant;
+}
+
+const { variant = "spread" } = Astro.props;
+---
+
+<footer class:list={["site-footer", `site-footer--${variant}`]}>
+  {variant === "centered" ? (
+    <>
+      <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms</a>
+        <a href="/data">Data</a>
+        <a href="/support">Support</a>
+        <a href="/supporters">Supporters</a>
+        <a href="mailto:hello@banded.uk">hello@banded.uk</a>
+      </div>
+      <p>&copy; {new Date().getFullYear()} Banded</p>
+    </>
+  ) : (
+    <>
+      <span>&copy; {new Date().getFullYear()} Banded</span>
+      <span class="footer-inline-links">
+        <a href="/">Home</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/data">Data</a>
+        <a href="/support">Support</a>
+        <a href="/blog">Blog</a>
+        <a href="mailto:hello@banded.uk">hello@banded.uk</a>
+      </span>
+    </>
+  )}
+</footer>
+
+<style>
+  .site-footer a {
+    color: var(--color-muted);
+  }
+
+  .site-footer a:hover {
+    color: var(--color-text);
+  }
+
+  /* Centred variant — used on the home page. */
+  .site-footer--centered {
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid var(--color-divider-soft);
+    font-size: var(--font-size-meta);
+    color: var(--color-muted);
+  }
+
+  .footer-links {
+    margin-bottom: 12px;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+  }
+
+  .footer-links a + a::before {
+    content: " \00B7 ";
+    margin: 0 8px;
+  }
+
+  /* Spread variant — used inside .page-container long-form pages. */
+  .site-footer--spread {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-divider);
+    color: var(--color-muted);
+    font-size: var(--font-size-meta);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-inline-links a + a::before {
+    content: " \00B7 ";
+    margin: 0 6px;
+  }
+
+  @media (max-width: 480px) {
+    .site-footer--spread {
+      flex-direction: column;
+    }
+  }
+</style>

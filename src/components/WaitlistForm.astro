@@ -1,0 +1,171 @@
+---
+// Posts to /waitlist — handled by functions/waitlist.ts (Cloudflare Pages Function).
+---
+
+<h2 class="mailing-list-heading">Mailing List</h2>
+<form class="signup-form" id="waitlist-form" action="/waitlist" method="POST" novalidate>
+  <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+  <input
+    type="text"
+    name="_gotcha"
+    class="honeypot"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+  />
+  <button type="submit">Subscribe</button>
+</form>
+<p class="signup-note" id="waitlist-note">Occasional updates. No spam.</p>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById("waitlist-form");
+    var note = document.getElementById("waitlist-note");
+    if (!form || !note) return;
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var emailInput = form.querySelector('input[name="email"]');
+      var honeypot = form.querySelector('input[name="_gotcha"]');
+      var button = form.querySelector("button");
+
+      note.classList.remove("success", "error");
+      button.disabled = true;
+      note.textContent = "Adding you…";
+
+      fetch("/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: emailInput.value.trim(),
+          _gotcha: honeypot ? honeypot.value : "",
+        }),
+      })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            return { ok: res.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.ok && result.data && result.data.ok) {
+            form.classList.add("is-hidden");
+            note.classList.add("success");
+            note.textContent = "Thanks — you're on the list.";
+          } else {
+            note.classList.add("error");
+            note.textContent =
+              (result.data && result.data.error) ||
+              "Something went wrong. Please try again.";
+            button.disabled = false;
+          }
+        })
+        .catch(function () {
+          note.classList.add("error");
+          note.textContent = "Could not reach the server. Please try again.";
+          button.disabled = false;
+        });
+    });
+  })();
+</script>
+
+<style>
+  .mailing-list-heading {
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    color: var(--color-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .signup-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .signup-form input[type="email"] {
+    flex: 1;
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-input-border);
+    background: var(--color-input-bg);
+    color: var(--color-text);
+    font-size: var(--font-size-body);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .signup-form input[type="email"]::placeholder {
+    color: var(--color-muted);
+  }
+
+  .signup-form input[type="email"]:focus {
+    border-color: var(--color-accent);
+  }
+
+  .signup-form button {
+    padding: 14px 24px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: var(--color-accent);
+    color: var(--color-text);
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .signup-form button:hover {
+    background: var(--color-accent-strong);
+  }
+
+  .signup-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .signup-form.is-hidden {
+    display: none;
+  }
+
+  .signup-note {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    margin-bottom: 48px;
+    min-height: 19px;
+  }
+
+  .signup-note.success {
+    color: var(--color-success);
+  }
+
+  .signup-note.error {
+    color: var(--color-error);
+  }
+
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  @media (max-width: 480px) {
+    .signup-form {
+      flex-direction: column;
+    }
+    .signup-form button {
+      padding: 14px;
+    }
+  }
+</style>
