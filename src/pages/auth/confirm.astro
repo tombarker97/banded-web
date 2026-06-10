@@ -1,0 +1,189 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+
+// Signup confirmation hop. Supabase email template points to this URL instead
+// of the raw `*.supabase.co/auth/v1/verify?...` so the link in the email body
+// matches the sending domain (banded.uk) — Resend Insights flagged the
+// mismatch as a spam-folder trigger in June 2026.
+//
+// Flow:
+//   <a href="https://banded.uk/auth/confirm?token={{ .TokenHash }}&type=signup">
+//     → this page (static, JS-only)
+//     → location.replace to https://<project>.supabase.co/auth/v1/verify?...
+//     → Supabase validates → 302 to https://api.banded.uk/auth/callback?code=…
+//     → branded success page auto-launches banded://auth/callback?code=…
+//
+// Only prod traffic hits this page — staging signups still use {{ .ConfirmationURL }}.
+---
+
+<BaseLayout
+  title="Confirming your signup — Banded"
+  description="Confirming your Banded signup."
+  noindex
+>
+  <main class="confirm">
+    <div class="card">
+      <div class="glyph" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 2L11 13"></path>
+          <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+        </svg>
+      </div>
+      <h1 id="title">Confirming your email…</h1>
+      <p id="body-copy">Hold tight while we finish setting up your account.</p>
+      <a id="manual-link" class="cta" href="#" style="display: none;">Continue manually</a>
+      <p class="footnote" id="footnote">This should only take a moment.</p>
+      <div class="wordmark">BANDED</div>
+    </div>
+  </main>
+
+  <noscript>
+    <p class="noscript-msg">
+      JavaScript is required to confirm your signup. Open this email on a
+      device with JavaScript enabled, or open Banded on your phone and sign in
+      — you can finish confirming there.
+    </p>
+  </noscript>
+
+  <script is:inline>
+    (function () {
+      // Hardcoded — this page only serves the prod email template. If staging
+      // ever needs the same hop, branch on a query param.
+      var SUPABASE_URL = "https://ardeuampcqtohrlibjip.supabase.co";
+      var NEXT = "https://api.banded.uk/auth/callback";
+
+      var params = new URLSearchParams(window.location.search);
+      var token = params.get("token");
+      var type = params.get("type") || "signup";
+
+      var title = document.getElementById("title");
+      var body = document.getElementById("body-copy");
+      var footnote = document.getElementById("footnote");
+      var manualLink = document.getElementById("manual-link");
+
+      if (!token) {
+        title.textContent = "Missing confirmation token";
+        body.textContent = "This link doesn't have the information we need to confirm your signup. Try requesting a fresh confirmation email from the app.";
+        footnote.style.display = "none";
+        return;
+      }
+
+      var verifyUrl = SUPABASE_URL + "/auth/v1/verify"
+        + "?token=" + encodeURIComponent(token)
+        + "&type=" + encodeURIComponent(type)
+        + "&redirect_to=" + encodeURIComponent(NEXT);
+
+      // Show the fallback link in case the auto-redirect is blocked.
+      manualLink.href = verifyUrl;
+      manualLink.style.display = "inline-block";
+
+      window.location.replace(verifyUrl);
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  main.confirm {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 440px;
+    background: #0D0D1F;
+    border: 1px solid #15152E;
+    border-radius: 24px;
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .glyph {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3B82F6 0%, #7C3AED 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 32px rgba(124, 58, 237, 0.4);
+  }
+
+  .glyph svg {
+    width: 36px;
+    height: 36px;
+    color: #FFFFFF;
+    transform: translate(-2px, 1px);
+  }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+    line-height: 1.2;
+    color: #FFFFFF;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #8B9DC3;
+    margin: 0 0 24px;
+  }
+
+  .cta {
+    display: inline-block;
+    width: 100%;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #3B82F6 0%, #7C3AED 100%);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+    margin-bottom: 4px;
+  }
+
+  .cta:hover {
+    color: #FFFFFF;
+  }
+
+  .footnote {
+    margin-top: 16px;
+    font-size: 13px;
+    color: #4A5275;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .wordmark {
+    margin-top: 32px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, #3B82F6 0%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .noscript-msg {
+    max-width: 440px;
+    margin: 24px auto;
+    padding: 16px;
+    background: #0D0D1F;
+    border: 1px solid #15152E;
+    border-radius: 12px;
+    color: #C8D1E0;
+    font-size: 15px;
+    text-align: center;
+  }
+</style>
