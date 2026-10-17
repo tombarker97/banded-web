@@ -66,10 +66,7 @@ let imageIndex = 0;
     <p class="gg-range">
       {week.rangeLabel}<span aria-hidden="true"> · </span>{week.gigCount} gigs
     </p>
-    <p class="gg-disclosure">
-      Ticket links are affiliate links, so Banded may earn a small commission at no extra
-      cost to you.
-    </p>
+    <p class="gg-disclosure">Affiliate links: Banded may earn a commission on tickets.</p>
     {
       !isLatest && (
         <a class="gg-latest" href="/gigs" data-keep-ch>
@@ -190,6 +187,11 @@ let imageIndex = 0;
     <a href={APP_STORE_URL} target="_blank" rel="noopener">Get Banded on the App Store</a>
   </aside>
 
+  <p class="gg-disclosure-full" id="about-links">
+    <strong>About these links:</strong> ticket links on this page are affiliate links. If you
+    buy through them, Banded may earn a small commission at no extra cost to you.
+  </p>
+
   <Footer variant="spread" />
 </main>
 
@@ -280,22 +282,31 @@ let imageIndex = 0;
     color: var(--color-accent-hover);
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 18px;
+    margin-bottom: 4px;
   }
 
+  /* Short and quiet, but above every ticket button (ASA/CAP: disclose before the click). */
   .gg-disclosure {
-    background: var(--color-accent-highlight);
-    border-left: 3px solid var(--color-accent);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    padding: 10px 14px;
-    color: var(--color-body);
-    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    font-size: 12px;
     line-height: var(--line-height-tight);
+    margin-bottom: 16px;
+  }
+
+  .gg-disclosure-full {
+    margin-top: 32px;
+    color: var(--color-muted);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-base);
+  }
+
+  .gg-disclosure-full strong {
+    color: var(--color-body);
+    font-weight: 600;
   }
 
   .gg-latest {
     display: inline-block;
-    margin-top: 14px;
     font-size: var(--font-size-meta);
     font-weight: 600;
   }
