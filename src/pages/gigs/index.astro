@@ -1,0 +1,92 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Footer from "~/components/Footer.astro";
+import GigGuideWeek from "~/components/GigGuideWeek.astro";
+import { loadWeeks, weekMeta } from "~/lib/gig-guide";
+
+// The Instagram bio link. Always the newest valid week in data/gig-guide.
+const weeks = loadWeeks();
+const week = weeks[0];
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://banded.uk";
+
+const meta = week
+  ? weekMeta(week)
+  : {
+      title: "London gig guide — Banded",
+      description:
+        "A weekly guide to the best gigs in London: two hand-picked shows a night, with tickets in one tap.",
+    };
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogImage={week ? `${site}/og/gigs/${week.weekStart}.png` : undefined}
+>
+  {
+    week ? (
+      <GigGuideWeek week={week} weeks={weeks} />
+    ) : (
+      <main class="gg-empty">
+        <a class="gg-brand" href="/">banded</a>
+        <h1>London gig guide</h1>
+        <p>This week's guide is on its way. Check back soon.</p>
+        <a
+          class="gg-empty-cta"
+          href="https://apps.apple.com/gb/app/banded-gig-diary-discovery/id6761863648"
+          target="_blank"
+          rel="noopener"
+        >
+          Find gigs near you in Banded
+        </a>
+        <Footer variant="spread" />
+      </main>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .gg-empty {
+    flex: 1;
+    width: 100%;
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+    padding: 28px 16px 48px;
+  }
+
+  .gg-brand {
+    display: inline-block;
+    font-family: "Clash Display", var(--font-stack);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 28px;
+    background: var(--gradient-wordmark);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gg-empty h1 {
+    font-size: 34px;
+    letter-spacing: -0.8px;
+    margin-bottom: 8px;
+  }
+
+  .gg-empty p {
+    color: var(--color-body);
+    margin-bottom: 24px;
+  }
+
+  .gg-empty-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0 22px;
+    border-radius: var(--radius-md);
+    background: var(--color-accent);
+    color: #ffffff;
+    font-weight: 700;
+  }
+</style>

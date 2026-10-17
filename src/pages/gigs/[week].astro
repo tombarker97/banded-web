@@ -1,0 +1,31 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import GigGuideWeek from "~/components/GigGuideWeek.astro";
+import { loadWeeks, weekMeta, type GigWeek } from "~/lib/gig-guide";
+
+// Permanent archive page per week, e.g. /gigs/2026-10-19.
+export function getStaticPaths() {
+  const weeks = loadWeeks();
+  return weeks.map((week) => ({
+    params: { week: week.weekStart },
+    props: { week, weeks },
+  }));
+}
+
+interface Props {
+  week: GigWeek;
+  weeks: GigWeek[];
+}
+
+const { week, weeks } = Astro.props;
+const { title, description } = weekMeta(week);
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://banded.uk";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={`${site}/og/gigs/${week.weekStart}.png`}
+>
+  <GigGuideWeek week={week} weeks={weeks} />
+</BaseLayout>

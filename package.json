@@ -8,7 +8,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "gigs:check": "node scripts/check-gig-guide.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.0",

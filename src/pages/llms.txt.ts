@@ -59,6 +59,7 @@ and a discovery surface for upcoming shows.
 - Support: ${site}/support
 - Help articles index: ${site}/help
 - Blog: ${site}/blog
+- London gig guide (weekly, two hand-picked gigs a night): ${site}/gigs
 - Privacy: ${site}/privacy
 - Terms: ${site}/terms
 - Data sources & attribution: ${site}/data

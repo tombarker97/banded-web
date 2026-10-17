@@ -46,16 +46,48 @@ export interface OgImageProps {
   title: string;
   subtitle?: string;
   eyebrow?: string;
+  /** Photo behind a dark gradient. Skipped (text-only card) if it can't be fetched. */
+  backgroundImageUrl?: string;
 }
 
 const WIDTH = 1200;
 const HEIGHT = 630;
 
-export async function renderOgPng({
-  title,
-  subtitle,
-  eyebrow,
-}: OgImageProps): Promise<Uint8Array> {
+/** Fetch a JPEG/PNG as a data URI, or undefined on any failure. */
+async function fetchImageDataUri(url: string): Promise<string | undefined> {
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(10_000) });
+    const type = res.headers.get("content-type")?.split(";")[0] ?? "";
+    if (!res.ok || !["image/jpeg", "image/png"].includes(type)) {
+      console.warn(`[og] background ${url} unusable (${res.status} ${type}), using text-only card`);
+      return undefined;
+    }
+    const data = Buffer.from(await res.arrayBuffer()).toString("base64");
+    return `data:${type};base64,${data}`;
+  } catch (err) {
+    console.warn(`[og] background ${url} failed (${(err as Error).message}), using text-only card`);
+    return undefined;
+  }
+}
+
+export async function renderOgPng(props: OgImageProps): Promise<Uint8Array> {
+  const background = props.backgroundImageUrl
+    ? await fetchImageDataUri(props.backgroundImageUrl)
+    : undefined;
+  if (background) {
+    try {
+      return await renderCard(props, background);
+    } catch (err) {
+      console.warn(`[og] render with background failed (${(err as Error).message}), retrying text-only`);
+    }
+  }
+  return renderCard(props);
+}
+
+async function renderCard(
+  { title, subtitle, eyebrow }: OgImageProps,
+  background?: string,
+): Promise<Uint8Array> {
   const fonts = await loadFonts();
 
   const eyebrowText = eyebrow ?? "Banded";
@@ -74,6 +106,27 @@ export async function renderOgPng({
       font-family: Inter;
       color: #FFFFFF;
     ">
+      ${
+        background
+          ? `<img src="${background}" width="${WIDTH}" height="${HEIGHT}" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: ${WIDTH}px;
+              height: ${HEIGHT}px;
+              object-fit: cover;
+            " />
+            <div style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: ${WIDTH}px;
+              height: ${HEIGHT}px;
+              display: flex;
+              background-image: linear-gradient(90deg, rgba(8,8,16,0.96) 0%, rgba(8,8,16,0.82) 50%, rgba(8,8,16,0.35) 100%);
+            "></div>`
+          : ""
+      }
       <div style="
         display: flex;
         font-size: 22px;

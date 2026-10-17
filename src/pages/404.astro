@@ -18,6 +18,12 @@ import Footer from "~/components/Footer.astro";
   </main>
 
   <Footer variant="centered" />
+
+  <script is:inline>
+    // A gig guide week that doesn't exist (or whose file was broken) sends
+    // people to the newest guide, keeping ?ch so Impact attribution survives.
+    if (/^\/gigs\/./.test(location.pathname)) location.replace("/gigs" + location.search);
+  </script>
 </BaseLayout>
 
 <style>

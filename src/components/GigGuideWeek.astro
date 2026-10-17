@@ -1,0 +1,618 @@
+---
+import JsonLd from "./JsonLd.astro";
+import Footer from "./Footer.astro";
+import type { GigWeek } from "~/lib/gig-guide";
+
+interface Props {
+  week: GigWeek;
+  /** Every valid week, newest first — the others are listed at the bottom. */
+  weeks: GigWeek[];
+}
+
+const { week, weeks } = Astro.props;
+
+const APP_STORE_URL =
+  "https://apps.apple.com/gb/app/banded-gig-diary-discovery/id6761863648";
+
+const isLatest = weeks[0]?.weekStart === week.weekStart;
+const otherWeeks = weeks.filter((w) => w.weekStart !== week.weekStart);
+const pageTitle = `${week.city} gig guide: ${week.rangeLabel}`;
+
+let position = 0;
+const eventList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: pageTitle,
+  itemListElement: week.days.flatMap((day) =>
+    day.gigs.map((gig) => ({
+      "@type": "ListItem",
+      position: ++position,
+      item: {
+        "@type": "MusicEvent",
+        name: gig.support.length
+          ? `${gig.headliner} with ${gig.support.join(", ")}`
+          : gig.headliner,
+        startDate: gig.startDate,
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        location: {
+          "@type": "Place",
+          name: gig.venue,
+          address: {
+            "@type": "PostalAddress",
+            ...(gig.postcode && { postalCode: gig.postcode }),
+            addressLocality: week.city,
+            addressCountry: "GB",
+          },
+        },
+        performer: [gig.headliner, ...gig.support].map((name) => ({
+          "@type": "MusicGroup",
+          name,
+        })),
+        ...(gig.imageUrl && { image: gig.imageUrl }),
+        offers: { "@type": "Offer", url: gig.ticketUrl },
+      },
+    })),
+  ),
+};
+
+let imageIndex = 0;
+---
+
+<main class="gig-guide">
+  <header class="gg-header">
+    <a class="gg-brand" href="/" aria-label="Banded home">banded</a>
+    <h1>{week.city} gig guide</h1>
+    <p class="gg-range">
+      {week.rangeLabel}<span aria-hidden="true"> · </span>{week.gigCount} gigs
+    </p>
+    <p class="gg-disclosure">
+      Ticket links are affiliate links, so Banded may earn a small commission at no extra
+      cost to you.
+    </p>
+    {
+      !isLatest && (
+        <a class="gg-latest" href="/gigs" data-keep-ch>
+          This is an older guide. See this week's gigs &rarr;
+        </a>
+      )
+    }
+  </header>
+
+  {
+    week.columnParagraphs.length > 0 && (
+      <div class="gg-column">
+        {week.columnParagraphs.map((p) => (
+          <p>{p}</p>
+        ))}
+      </div>
+    )
+  }
+
+  <nav class="gg-days" aria-label="Jump to a day">
+    {
+      week.days.map((day) => (
+        <a href={`#d-${day.date}`} data-date={day.date}>
+          <span>{day.weekdayShort}</span>
+          <b>{day.dayMonth.split(" ")[0]}</b>
+        </a>
+      ))
+    }
+  </nav>
+
+  {
+    week.days.map((day) => (
+      <section class="gg-day" id={`d-${day.date}`} data-date={day.date}>
+        <h2>
+          {day.weekday} <span>{day.dayMonth}</span>
+          <em class="gg-today-tag">Tonight</em>
+        </h2>
+        <div class="gg-grid">
+          {day.gigs.map((gig) => {
+            const eager = imageIndex++ < 2;
+            return (
+              <article class="gig" id={gig.id}>
+                <div class="gig-media">
+                  {gig.imageUrl ? (
+                    <img
+                      src={gig.imageUrl}
+                      alt={gig.headliner}
+                      width="1024"
+                      height="576"
+                      loading={eager ? "eager" : "lazy"}
+                      fetchpriority={imageIndex === 1 ? "high" : "auto"}
+                      decoding="async"
+                    />
+                  ) : (
+                    <span class="gig-placeholder" aria-hidden="true">
+                      {gig.headliner}
+                    </span>
+                  )}
+                </div>
+                <div class="gig-body">
+                  <p class="gig-when">
+                    {day.weekdayShort} {day.dayMonth}
+                    {gig.genre && <span class="gig-genre">{gig.genre}</span>}
+                  </p>
+                  <h3>{gig.headliner}</h3>
+                  {gig.support.length > 0 && (
+                    <p class="gig-support">with {gig.support.join(", ")}</p>
+                  )}
+                  <p class="gig-where">
+                    {gig.postcode ? `${gig.venue}, ${gig.postcode}` : gig.venue}
+                  </p>
+                  {gig.startTime && <p class="gig-time">Starts {gig.startTime}</p>}
+                  <a
+                    class="gig-cta"
+                    href={gig.ticketUrl}
+                    target="_blank"
+                    rel="sponsored nofollow noopener"
+                    data-ticket
+                  >
+                    Get tickets
+                  </a>
+                  <a class="gig-app" href={APP_STORE_URL} target="_blank" rel="noopener">
+                    Open in Banded
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    ))
+  }
+
+  {
+    otherWeeks.length > 0 && (
+      <section class="gg-archive" aria-labelledby="gg-archive-title">
+        <h2 id="gg-archive-title">More {week.city} gig guides</h2>
+        <ul>
+          {otherWeeks.map((w) => (
+            <li>
+              <a href={`/gigs/${w.weekStart}`} data-keep-ch>
+                {w.rangeLabel}
+                {w.weekStart.slice(0, 4) !== week.weekStart.slice(0, 4) &&
+                  `, ${w.weekStart.slice(0, 4)}`}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <aside class="gg-app">
+    <p>
+      Track every gig you go to with <strong>Banded</strong>, the social gig diary. Free on
+      iPhone.
+    </p>
+    <a href={APP_STORE_URL} target="_blank" rel="noopener">Get Banded on the App Store</a>
+  </aside>
+
+  <Footer variant="spread" />
+</main>
+
+<JsonLd schema={eventList} />
+
+<script is:inline>
+  (function () {
+    function run() {
+      // ?ch=ig_story → subId2=gig_guide_ig_story, so Impact reports which
+      // channel sold the ticket. Mirrors withSubId2() in src/lib/gig-guide.ts.
+      var raw = (new URLSearchParams(location.search).get("ch") || "").toLowerCase();
+      var ch = /^[a-z0-9_]{1,32}$/.test(raw) ? raw : "web";
+      var sub = "gig_guide_" + ch;
+      var re = /([?&])subId2=[^&#]*/i;
+      document.querySelectorAll("a[data-ticket]").forEach(function (a) {
+        var url = a.getAttribute("href") || "";
+        a.setAttribute(
+          "href",
+          re.test(url)
+            ? url.replace(re, "$1subId2=" + sub)
+            : url + (url.indexOf("?") === -1 ? "?" : "&") + "subId2=" + sub,
+        );
+      });
+      if (ch !== "web") {
+        document.querySelectorAll("a[data-keep-ch]").forEach(function (a) {
+          var u = new URL(a.href);
+          u.searchParams.set("ch", ch);
+          a.href = u.toString();
+        });
+      }
+
+      // Dim days that have passed and flag tonight (London time).
+      var today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/London" }).format(
+        new Date(),
+      );
+      document.querySelectorAll("[data-date]").forEach(function (el) {
+        var d = el.getAttribute("data-date");
+        if (d < today) el.classList.add("is-past");
+        if (d === today) el.classList.add("is-today");
+      });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", run);
+    } else {
+      run();
+    }
+  })();
+</script>
+
+<style>
+  .gig-guide {
+    --gg-nav-height: 64px;
+    flex: 1;
+    width: 100%;
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+    padding: 28px 16px 48px;
+  }
+
+  .gg-header {
+    margin-bottom: 20px;
+  }
+
+  .gg-brand {
+    display: inline-block;
+    font-family: "Clash Display", var(--font-stack);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 28px;
+    background: var(--gradient-wordmark);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gg-header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    text-wrap: balance;
+  }
+
+  .gg-range {
+    color: var(--color-accent-hover);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  .gg-disclosure {
+    background: var(--color-accent-highlight);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 10px 14px;
+    color: var(--color-body);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-tight);
+  }
+
+  .gg-latest {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: var(--font-size-meta);
+    font-weight: 600;
+  }
+
+  .gg-column {
+    margin-bottom: 8px;
+  }
+
+  .gg-column p {
+    color: var(--color-body);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-base);
+    margin-bottom: 12px;
+  }
+
+  /* Sticky Mon–Sun chips for thumb-sized jumps. */
+  .gg-days {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    gap: 6px;
+    margin: 0 -16px 8px;
+    padding: 10px 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    background: rgba(8, 8, 16, 0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-divider-soft);
+  }
+
+  .gg-days::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gg-days a {
+    flex: 1 0 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 0;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-card-border);
+    background: var(--color-card-bg);
+    color: var(--color-text);
+    line-height: 1.15;
+  }
+
+  .gg-days a span {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-muted);
+  }
+
+  .gg-days a b {
+    font-size: 17px;
+  }
+
+  .gg-days a.is-past {
+    opacity: 0.45;
+  }
+
+  .gg-days a.is-today {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+  }
+
+  .gg-days a.is-today span {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .gg-day {
+    padding-top: 20px;
+    scroll-margin-top: var(--gg-nav-height);
+  }
+
+  .gg-day h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: var(--font-size-h2);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 12px;
+  }
+
+  .gg-day h2 span {
+    color: var(--color-muted);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .gg-today-tag {
+    display: none;
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+    background: var(--color-accent);
+    border-radius: var(--radius-pill);
+    padding: 2px 8px;
+    align-self: center;
+  }
+
+  .gg-day.is-today .gg-today-tag {
+    display: inline-block;
+  }
+
+  .gg-day.is-past .gig {
+    opacity: 0.55;
+  }
+
+  .gg-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .gg-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .gig {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-card-border);
+    background: var(--color-card-bg);
+    overflow: hidden;
+  }
+
+  .gig-media {
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, #1b2440 0%, #0e1120 100%);
+    overflow: hidden;
+  }
+
+  .gig-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gig-placeholder {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    padding: 16px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    color: rgba(255, 255, 255, 0.22);
+  }
+
+  .gig-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 14px 16px 16px;
+  }
+
+  .gig-when {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--color-accent-hover);
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .gig-genre {
+    color: var(--color-muted);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-pill);
+    padding: 1px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .gig h3 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .gig-support {
+    color: var(--color-body);
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .gig-where,
+  .gig-time {
+    color: var(--color-muted);
+    font-size: var(--font-size-meta);
+    line-height: var(--line-height-tight);
+  }
+
+  .gig-where {
+    margin-top: 4px;
+  }
+
+  .gig-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    margin-top: auto;
+    border-radius: var(--radius-md);
+    background: var(--color-accent);
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+
+  /* .gig-cta's margin-top:auto aligns buttons across the 2-col grid; this is the minimum gap. */
+  .gig-body > p:last-of-type {
+    margin-bottom: 14px;
+  }
+
+  .gig-cta:hover,
+  .gig-cta:active {
+    background: var(--color-accent-strong);
+    color: #ffffff;
+  }
+
+  .gig-cta:active {
+    transform: scale(0.98);
+  }
+
+  .gig-app {
+    align-self: center;
+    margin-top: 10px;
+    padding: 4px 8px;
+    color: var(--color-muted);
+    font-size: var(--font-size-small);
+  }
+
+  .gig-app:hover {
+    color: var(--color-text);
+  }
+
+  .gg-archive {
+    margin-top: 48px;
+  }
+
+  .gg-archive h2 {
+    font-size: var(--font-size-h3);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .gg-archive ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .gg-archive a {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-card-border);
+    background: var(--color-card-bg);
+    color: var(--color-text);
+    font-size: var(--font-size-meta);
+  }
+
+  .gg-archive a:hover {
+    border-color: var(--color-accent-card-border);
+    color: var(--color-accent-hover);
+  }
+
+  .gg-app {
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-accent-card-border);
+    background: var(--color-accent-card-bg);
+    font-size: 15px;
+    color: var(--color-body);
+  }
+
+  .gg-app strong {
+    color: var(--color-text);
+  }
+
+  .gg-app a {
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  @media (min-width: 640px) {
+    .gg-header h1 {
+      font-size: 44px;
+    }
+    .gg-days {
+      margin: 0 0 8px;
+      padding: 10px 0;
+    }
+  }
+</style>
