@@ -17,6 +17,10 @@ export const GIG_GUIDE_DIR = resolve(process.cwd(), "data/gig-guide");
 /** Every ticket link is rendered with this subId2; the page script swaps in ?ch. */
 export const DEFAULT_SUB_ID = "gig_guide_web";
 
+/** Ticketmaster sale/event status, kept current by .github/workflows/gig-guide-status.yml. */
+export const GIG_STATUSES = ["onsale", "offsale", "cancelled", "postponed", "rescheduled"] as const;
+export type GigStatus = (typeof GIG_STATUSES)[number];
+
 export interface Gig {
   id: string;
   headliner: string;
@@ -25,8 +29,18 @@ export interface Gig {
   venue: string;
   postcode?: string;
   startTime?: string;
-  /** ISO 8601 with the Europe/London offset, for JSON-LD. */
+  /** ISO 8601 with the Europe/London offset, for JSON-LD (the new date if rescheduled). */
   startDate: string;
+  /** Original start, set only when rescheduled. */
+  previousStartDate?: string;
+  /** Missing in the JSON means "onsale". */
+  status: GigStatus;
+  /** Rescheduled only: YYYY-MM-DD, set when the date changed. */
+  newDate?: string;
+  /** Rescheduled only: HH:MM, set when Ticketmaster gives a time. */
+  newStartTime?: string;
+  /** Rescheduled only: "Thursday 22 October, 20:00", or "20:00" if only the time moved. */
+  movedTo?: string;
   ticketUrl: string;
   imageUrl?: string;
   tmEventId?: string;
@@ -157,6 +171,40 @@ function parseGig(raw: unknown, date: string, where: string, warnings: string[])
     ? g.support.map(str).filter((s): s is string => Boolean(s))
     : [];
 
+  let status: GigStatus = "onsale";
+  const rawStatus = str(g.status);
+  if (rawStatus && (GIG_STATUSES as readonly string[]).includes(rawStatus)) {
+    status = rawStatus as GigStatus;
+  } else if (rawStatus) {
+    warnings.push(`${where}: "${headliner}" unknown status "${rawStatus}", shown as onsale`);
+  }
+
+  let newDate: string | undefined;
+  let newStartTime: string | undefined;
+  if (status === "rescheduled") {
+    newDate = str(g.newDate);
+    if (newDate && !parseDate(newDate)) {
+      warnings.push(`${where}: "${headliner}" newDate "${newDate}" is not YYYY-MM-DD, ignored`);
+      newDate = undefined;
+    }
+    newStartTime = str(g.newStartTime);
+    if (newStartTime && !TIME_RE.test(newStartTime)) {
+      warnings.push(`${where}: "${headliner}" newStartTime "${newStartTime}" is not HH:MM, ignored`);
+      newStartTime = undefined;
+    }
+  } else if (g.newDate !== undefined || g.newStartTime !== undefined) {
+    warnings.push(`${where}: "${headliner}" newDate/newStartTime ignored (status is ${status})`);
+  }
+
+  const moved = status === "rescheduled" && (newDate || newStartTime);
+  const movedTo = !moved
+    ? undefined
+    : newDate
+      ? `${fmt(newDate, { weekday: "long", day: "numeric", month: "long" })}${
+          newStartTime ? `, ${newStartTime}` : ""
+        }`
+      : newStartTime;
+
   const tmEventId = str(g.tmEventId);
   const slug = headliner.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -168,7 +216,12 @@ function parseGig(raw: unknown, date: string, where: string, warnings: string[])
     venue,
     postcode: str(g.postcode),
     startTime,
-    startDate: londonIso(date, startTime),
+    startDate: moved ? londonIso(newDate ?? date, newStartTime ?? startTime) : londonIso(date, startTime),
+    previousStartDate: moved ? londonIso(date, startTime) : undefined,
+    status,
+    newDate,
+    newStartTime,
+    movedTo,
     ticketUrl: withSubId2(ticketUrl, DEFAULT_SUB_ID),
     imageUrl: httpsUrl(g.imageUrl),
     tmEventId,

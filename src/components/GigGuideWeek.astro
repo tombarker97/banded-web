@@ -1,7 +1,7 @@
 ---
 import JsonLd from "./JsonLd.astro";
 import Footer from "./Footer.astro";
-import type { GigWeek } from "~/lib/gig-guide";
+import type { Gig, GigWeek } from "~/lib/gig-guide";
 
 interface Props {
   week: GigWeek;
@@ -18,6 +18,21 @@ const isLatest = weeks[0]?.weekStart === week.weekStart;
 const otherWeeks = weeks.filter((w) => w.weekStart !== week.weekStart);
 const pageTitle = `${week.city} gig guide: ${week.rangeLabel}`;
 
+const EVENT_STATUS = {
+  onsale: "EventScheduled",
+  offsale: "EventScheduled",
+  cancelled: "EventCancelled",
+  postponed: "EventPostponed",
+  rescheduled: "EventRescheduled",
+} as const;
+
+/** Shown in place of "Get tickets" for gigs that can't be bought. */
+const BADGE: Partial<Record<Gig["status"], string>> = {
+  cancelled: "Cancelled",
+  postponed: "Postponed",
+  offsale: "Not on sale",
+};
+
 let position = 0;
 const eventList = {
   "@context": "https://schema.org",
@@ -33,7 +48,8 @@ const eventList = {
           ? `${gig.headliner} with ${gig.support.join(", ")}`
           : gig.headliner,
         startDate: gig.startDate,
-        eventStatus: "https://schema.org/EventScheduled",
+        ...(gig.previousStartDate && { previousStartDate: gig.previousStartDate }),
+        eventStatus: `https://schema.org/${EVENT_STATUS[gig.status]}`,
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         location: {
           "@type": "Place",
@@ -50,7 +66,7 @@ const eventList = {
           name,
         })),
         ...(gig.imageUrl && { image: gig.imageUrl }),
-        offers: { "@type": "Offer", url: gig.ticketUrl },
+        ...(!BADGE[gig.status] && { offers: { "@type": "Offer", url: gig.ticketUrl } }),
       },
     })),
   ),
@@ -108,7 +124,7 @@ let imageIndex = 0;
           {day.gigs.map((gig) => {
             const eager = imageIndex++ < 2;
             return (
-              <article class="gig" id={gig.id}>
+              <article class:list={["gig", `gig--${gig.status}`]} id={gig.id}>
                 <div class="gig-media">
                   {gig.imageUrl ? (
                     <img
@@ -128,7 +144,13 @@ let imageIndex = 0;
                 </div>
                 <div class="gig-body">
                   <p class="gig-when">
-                    {day.weekdayShort} {day.dayMonth}
+                    {gig.newDate ? (
+                      <s>
+                        {day.weekdayShort} {day.dayMonth}
+                      </s>
+                    ) : (
+                      `${day.weekdayShort} ${day.dayMonth}`
+                    )}
                     {gig.genre && <span class="gig-genre">{gig.genre}</span>}
                   </p>
                   <h3>{gig.headliner}</h3>
@@ -138,16 +160,36 @@ let imageIndex = 0;
                   <p class="gig-where">
                     {gig.postcode ? `${gig.venue}, ${gig.postcode}` : gig.venue}
                   </p>
-                  {gig.startTime && <p class="gig-time">Starts {gig.startTime}</p>}
-                  <a
-                    class="gig-cta"
-                    href={gig.ticketUrl}
-                    target="_blank"
-                    rel="sponsored nofollow noopener"
-                    data-ticket
-                  >
-                    Get tickets
-                  </a>
+                  {gig.startTime &&
+                    (gig.movedTo ? (
+                      <p class="gig-time">
+                        <s>Starts {gig.startTime}</s>
+                      </p>
+                    ) : (
+                      <p class="gig-time">Starts {gig.startTime}</p>
+                    ))}
+                  {gig.status === "rescheduled" && (
+                    <p class="gig-moved">
+                      {gig.newDate
+                        ? `Moved to ${gig.movedTo}`
+                        : gig.movedTo
+                          ? `Now starts ${gig.movedTo}`
+                          : "Rescheduled: check the new date"}
+                    </p>
+                  )}
+                  {BADGE[gig.status] ? (
+                    <span class="gig-badge">{BADGE[gig.status]}</span>
+                  ) : (
+                    <a
+                      class="gig-cta"
+                      href={gig.ticketUrl}
+                      target="_blank"
+                      rel="sponsored nofollow noopener"
+                      data-ticket
+                    >
+                      Get tickets
+                    </a>
+                  )}
                   <a class="gig-app" href={APP_STORE_URL} target="_blank" rel="noopener">
                     Open in Banded
                   </a>
@@ -551,6 +593,46 @@ let imageIndex = 0;
 
   .gig-cta:active {
     transform: scale(0.98);
+  }
+
+  /* Replaces "Get tickets" for cancelled / postponed / offsale gigs. Not a link. */
+  .gig-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    margin-top: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-card-border);
+    color: var(--color-muted);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+
+  .gig--cancelled .gig-badge {
+    border-color: rgba(248, 113, 113, 0.4);
+    color: var(--color-error);
+  }
+
+  .gig--cancelled .gig-media,
+  .gig--postponed .gig-media {
+    filter: grayscale(1);
+    opacity: 0.45;
+  }
+
+  .gig--cancelled h3,
+  .gig--postponed h3,
+  .gig--cancelled .gig-when,
+  .gig--postponed .gig-when {
+    color: var(--color-muted);
+  }
+
+  .gig-moved {
+    color: var(--color-warning);
+    font-size: var(--font-size-meta);
+    font-weight: 600;
+    margin-top: 4px;
   }
 
   .gig-app {
