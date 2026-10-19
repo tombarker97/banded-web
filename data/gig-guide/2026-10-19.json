@@ -8,7 +8,7 @@
     "headliner": "J. Cole",
     "imageUrl": "https://s1.ticketm.net/dam/a/cc7/bdd0a6dc-49b6-4d87-a1ba-14d401c71cc7_TABLET_LANDSCAPE_16_9.jpg"
   },
-  "generatedAt": "2026-10-19T16:28:46Z",
+  "generatedAt": "2026-10-19T16:42:07Z",
   "days": [
     {
       "date": "2026-10-19",
@@ -146,16 +146,18 @@
           "status": "onsale"
         },
         {
-          "tmEventId": "LvZ18QEUj1vYlJWDSy9UI",
-          "headliner": "Nerorgasmo",
-          "support": [],
-          "genre": "Hardcore Punk",
-          "venue": "New Cross Inn",
-          "postcode": "SE14 6AS",
-          "startTime": "18:00",
-          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Fnerorgasmo-tickets-B3D8K0%3Fref%3Dticketmaster&utm_medium=affiliate&subId2=gig_guide",
-          "imageUrl": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_TABLET_LANDSCAPE_16_9.jpg",
-          "status": "onsale"
+          "tmEventId": null,
+          "headliner": "Darcy Harding and The Foxes",
+          "support": [
+            "SAND",
+            "Texas Horse Meat Scandal"
+          ],
+          "genre": null,
+          "venue": "The Elephant's Head",
+          "postcode": "NW1 8QR",
+          "startTime": "19:00",
+          "ticketUrl": "https://dice.fm/event/avxn6q-darcy-harding-and-the-foxes-sand-texas-horse-meat-scandal-23rd-oct-the-elephants-head-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-08-21/fedd1848-3fbc-4d0a-890d-7b84e66860ef.jpg?w=1600&auto=compress"
         }
       ]
     },
