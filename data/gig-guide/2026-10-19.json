@@ -3,12 +3,12 @@
   "weekStart": "2026-10-19",
   "weekEnd": "2026-10-25",
   "city": "London",
-  "column": "LONDON, OCT 19. J. Cole opens the week at The O2, and every night has a smaller gig too, from Lip Critic at the Underworld to African Head Charge at the Fox and Firkin.\n\nOne big show and one local pick for every night below. Tap through for tickets.",
+  "column": "LONDON, OCT 19. J. Cole opens the week at The O2, and every night has a smaller gig too, from Lip Critic at the Underworld to Ben Watt and Tracey Thorn at MOTH Club.\n\nOne big show and one local pick for every night below. Tap through for tickets.",
   "cover": {
     "headliner": "J. Cole",
     "imageUrl": "https://s1.ticketm.net/dam/a/cc7/bdd0a6dc-49b6-4d87-a1ba-14d401c71cc7_TABLET_LANDSCAPE_16_9.jpg"
   },
-  "generatedAt": "2026-10-19T16:42:07Z",
+  "generatedAt": "2026-10-19T16:47:02Z",
   "days": [
     {
       "date": "2026-10-19",
@@ -210,16 +210,15 @@
           "status": "onsale"
         },
         {
-          "tmEventId": "LvZ18Ql2Rx9q3vbDemYVF",
-          "headliner": "African Head Charge",
+          "tmEventId": null,
+          "headliner": "Ben Watt and Tracey Thorn",
           "support": [],
-          "genre": "Dub",
-          "venue": "Fox and Firkin",
-          "postcode": "SE13 6JZ",
-          "startTime": "14:00",
-          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Fafrican-head-charge-open-air-show-tickets-SKH692%3Fref%3Dticketmaster&utm_medium=affiliate&subId2=gig_guide",
-          "imageUrl": "https://s1.ticketm.net/dam/c/27e/458d1b62-6e4f-4ffd-8941-9ed303d8e27e_106041_TABLET_LANDSCAPE_16_9.jpg",
-          "status": "onsale"
+          "genre": "Pop/Electronic",
+          "venue": "MOTH Club",
+          "postcode": "E9 6NU",
+          "startTime": "19:00",
+          "ticketUrl": "https://dice.fm/event/pyb96w-ben-watt-and-tracey-thorn-25th-oct-moth-club-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-03-24/5f894849-5d65-49ba-8e08-41c76f66f287.jpg?w=1600&auto=compress"
         }
       ]
     }
