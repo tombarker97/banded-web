@@ -3,12 +3,12 @@
   "weekStart": "2026-10-19",
   "weekEnd": "2026-10-25",
   "city": "London",
-  "column": "LONDON, OCT 19. J. Cole opens the week at The O2, and RAYE plays the Royal Albert Hall on Friday.\n\nTwo picks for every night are below. Tap through for tickets.",
+  "column": "LONDON, OCT 19. J. Cole opens the week at The O2, and every night has a smaller gig too, from Lip Critic at the Underworld to African Head Charge at the Fox and Firkin.\n\nOne big show and one local pick for every night below. Tap through for tickets.",
   "cover": {
     "headliner": "J. Cole",
     "imageUrl": "https://s1.ticketm.net/dam/a/cc7/bdd0a6dc-49b6-4d87-a1ba-14d401c71cc7_TABLET_LANDSCAPE_16_9.jpg"
   },
-  "generatedAt": "2026-10-18T16:32:58Z",
+  "generatedAt": "2026-10-19T16:28:46Z",
   "days": [
     {
       "date": "2026-10-19",
@@ -26,17 +26,15 @@
           "status": "onsale"
         },
         {
-          "tmEventId": "G5dzZ_aUoOoIj",
-          "headliner": "Angine de Poitrine",
-          "support": [
-            "Gros Mene"
-          ],
-          "genre": "Experimental Rock",
-          "venue": "Troxy",
-          "postcode": "E1 0HX",
+          "tmEventId": "LvZ18QIgOcg1Q_d-H3W5r",
+          "headliner": "John Splithoff",
+          "support": [],
+          "genre": "Pop/Soul",
+          "venue": "The Garage",
+          "postcode": "N5 1RD",
           "startTime": "19:00",
-          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fangine-de-poitrine-london-19-10-2026%2Fevent%2F3E00649D91811A1C&utm_medium=affiliate&subId2=gig_guide",
-          "imageUrl": "https://s1.ticketm.net/dam/a/3b4/3eff1f0c-955d-46b7-a9b2-4f18e2af63b4_TABLET_LANDSCAPE_16_9.jpg",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Fjohn-splithoff-tickets-D0WR9T%3Fref%3Dticketmaster&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/7ff/5b397077-2ec2-4c78-bc71-2416490377ff_TABLET_LANDSCAPE_16_9.jpg",
           "status": "onsale"
         }
       ]
@@ -57,17 +55,17 @@
           "status": "onsale"
         },
         {
-          "tmEventId": "G5dzZ_k3TR4CD",
-          "headliner": "Arlo Parks",
+          "tmEventId": "1AdfZ_6Gklm7buN",
+          "headliner": "Grace Gachot",
           "support": [
-            "Baird"
+            "Lily Knott"
           ],
-          "genre": "Indie/Soul",
-          "venue": "O2 Academy Brixton",
-          "postcode": "SW9 9SL",
+          "genre": "Pop",
+          "venue": "The Lower Third",
+          "postcode": "WC2H 8NJ",
           "startTime": "19:00",
-          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Farlo-parks-desire-tour-london-20-10-2026%2Fevent%2F3E006464BFBD53BB&utm_medium=affiliate&subId2=gig_guide",
-          "imageUrl": "https://s1.ticketm.net/dam/a/47e/d532f689-dc81-43ac-9fb8-8e2ea364e47e_TABLET_LANDSCAPE_16_9.jpg",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fgrace-gachot-london-20-10-2026%2Fevent%2F3500647AEE118363&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/78a/927013c5-4364-486a-8609-99244d09e78a_TABLET_LANDSCAPE_16_9.jpg",
           "status": "onsale"
         }
       ]
@@ -90,18 +88,15 @@
           "status": "onsale"
         },
         {
-          "tmEventId": "LvZ18Qp0CeHBNI8ZljZVG",
-          "headliner": "Lime Garden",
-          "support": [
-            "Sarah Crean",
-            "lifeloose"
-          ],
-          "genre": "Indie Pop",
-          "venue": "Electric Brixton",
-          "postcode": "SW2 1RJ",
+          "tmEventId": "LvZ18QO8HbbVJ8YZc6SDq",
+          "headliner": "MOULD",
+          "support": [],
+          "genre": "Rock",
+          "venue": "London Oslo",
+          "postcode": "E8 1LL",
           "startTime": "19:00",
-          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Flime-garden-tickets-P6H3F2%3Fref%3Dticketmaster&utm_medium=affiliate&subId2=gig_guide",
-          "imageUrl": "https://s1.ticketm.net/dam/a/16e/8ca68868-b1c6-4e31-a433-1434ef37d16e_TABLET_LANDSCAPE_16_9.jpg",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Fmould-tickets-J0PQ7H%3Fref%3Dticketmaster&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_TABLET_LANDSCAPE_16_9.jpg",
           "status": "onsale"
         }
       ]
@@ -122,17 +117,15 @@
           "status": "onsale"
         },
         {
-          "tmEventId": "G5dzZ_kS_q7UR",
-          "headliner": "Stephen Wilson Jr.",
-          "support": [
-            "Sorcha Richardson"
-          ],
-          "genre": "Folk/Country",
-          "venue": "O2 Academy Brixton",
-          "postcode": "SW9 9SL",
-          "startTime": "18:30",
-          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fstephen-wilson-jr-gary-the-torch-london-22-10-2026%2Fevent%2F3E00646CD9744DAF&utm_medium=affiliate&subId2=gig_guide",
-          "imageUrl": "https://s1.ticketm.net/dam/a/6d6/ae6a1096-e582-4557-a85f-380f5c9ef6d6_TABLET_LANDSCAPE_16_9.jpg",
+          "tmEventId": "17GOv0G6GkhkYss",
+          "headliner": "Lip Critic",
+          "support": [],
+          "genre": "Punk/Electronic",
+          "venue": "Underworld",
+          "postcode": "NW1 0NE",
+          "startTime": "19:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketweb.uk%2Fevent%2Flip-critic-the-underworld-camden-tickets%2F14963173%3FREFERRAL_ID%3Dtmfeed&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/6fa/8fdcdf23-6f50-4edd-9e9c-b5999e8e36fa_TABLET_LANDSCAPE_16_9.jpg",
           "status": "onsale"
         }
       ]
@@ -153,15 +146,15 @@
           "status": "onsale"
         },
         {
-          "tmEventId": "G5vHZ_fraI-ph",
-          "headliner": "RAYE",
+          "tmEventId": "LvZ18QEUj1vYlJWDSy9UI",
+          "headliner": "Nerorgasmo",
           "support": [],
-          "genre": "Pop/R&B",
-          "venue": "Royal Albert Hall",
-          "postcode": "SW7 2AP",
-          "startTime": "19:15",
-          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fraye-london-23-10-2026%2Fevent%2F1F00654789A2159B&utm_medium=affiliate&subId2=gig_guide",
-          "imageUrl": "https://s1.ticketm.net/dam/a/8ed/3e96c9a4-2faf-40b1-854b-d5481b1f58ed_TABLET_LANDSCAPE_16_9.jpg",
+          "genre": "Hardcore Punk",
+          "venue": "New Cross Inn",
+          "postcode": "SE14 6AS",
+          "startTime": "18:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Fnerorgasmo-tickets-B3D8K0%3Fref%3Dticketmaster&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_TABLET_LANDSCAPE_16_9.jpg",
           "status": "onsale"
         }
       ]
@@ -182,15 +175,19 @@
           "status": "onsale"
         },
         {
-          "tmEventId": "1AMZk4eGkezn0yn",
-          "headliner": "The Reytons",
-          "support": [],
-          "genre": "Indie Rock",
-          "venue": "British Airways ARC",
-          "postcode": "W14 8FJ",
-          "startTime": "18:30",
-          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fthe-reytons-london-24-10-2026%2Fevent%2F37006542B8AA4E6A&utm_medium=affiliate&subId2=gig_guide",
-          "imageUrl": "https://s1.ticketm.net/dam/a/92f/b92f88d5-d31e-43e0-b0c5-17f6b875c92f_TABLET_LANDSCAPE_16_9.jpg",
+          "tmEventId": "LvZ18QIeamduGuYIEFCNW",
+          "headliner": "Lene Lovich",
+          "support": [
+            "SHH Sounds",
+            "DARLING BLACK",
+            "CHRYSALID HOMO"
+          ],
+          "genre": "New Wave",
+          "venue": "Nambucca",
+          "postcode": "N7 6LB",
+          "startTime": "19:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Flene-lovich-uk-2026-tour-tickets-7RK4PX%3Fref%3Dticketmaster&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/b4a/1ca8eee3-027f-466d-add4-fb6362006b4a_TABLET_LANDSCAPE_16_9.jpg",
           "status": "onsale"
         }
       ]
@@ -211,15 +208,15 @@
           "status": "onsale"
         },
         {
-          "tmEventId": "LvZ18QLiiPxOftYv5FBZb",
-          "headliner": "Saigon Soul Revival",
+          "tmEventId": "LvZ18Ql2Rx9q3vbDemYVF",
+          "headliner": "African Head Charge",
           "support": [],
-          "genre": "Psych/Soul",
-          "venue": "Jazz Cafe",
-          "postcode": "NW1 7PG",
-          "startTime": "19:00",
-          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Fsaigon-soul-revival-tickets-BHXZ6S%3Fref%3Dticketmaster&utm_medium=affiliate&subId2=gig_guide",
-          "imageUrl": "https://s1.ticketm.net/dam/c/548/5fefbd1c-973b-4b0e-9b2e-d78e4ce37548_106111_TABLET_LANDSCAPE_16_9.jpg",
+          "genre": "Dub",
+          "venue": "Fox and Firkin",
+          "postcode": "SE13 6JZ",
+          "startTime": "14:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Fafrican-head-charge-open-air-show-tickets-SKH692%3Fref%3Dticketmaster&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/c/27e/458d1b62-6e4f-4ffd-8941-9ed303d8e27e_106041_TABLET_LANDSCAPE_16_9.jpg",
           "status": "onsale"
         }
       ]
