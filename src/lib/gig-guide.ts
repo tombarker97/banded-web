@@ -14,7 +14,7 @@ import { join, resolve } from "node:path";
 
 export const GIG_GUIDE_DIR = resolve(process.cwd(), "data/gig-guide");
 
-/** Every ticket link is rendered with this subId2; the page script swaps in ?ch. */
+/** Every Impact ticket link is rendered with this subId2; the page script swaps in ?ch. */
 export const DEFAULT_SUB_ID = "gig_guide_web";
 
 /** Ticketmaster sale/event status, kept current by .github/workflows/gig-guide-status.yml. */
@@ -115,15 +115,11 @@ function httpsUrl(value: unknown): string | undefined {
 /**
  * Set subId2 on an Impact affiliate URL by editing the raw string, so the
  * already-encoded `u=` destination param is left byte-for-byte untouched.
- * The inline script in GigGuideWeek.astro mirrors this logic.
+ * Links without a subId2 (DICE and other non-affiliate links) are returned
+ * unchanged. The inline script in GigGuideWeek.astro mirrors this logic.
  */
 export function withSubId2(url: string, value: string): string {
-  const re = /([?&])subId2=[^&#]*/i;
-  if (re.test(url)) return url.replace(re, `$1subId2=${value}`);
-  const hashAt = url.indexOf("#");
-  const base = hashAt === -1 ? url : url.slice(0, hashAt);
-  const hash = hashAt === -1 ? "" : url.slice(hashAt);
-  return `${base}${base.includes("?") ? "&" : "?"}subId2=${value}${hash}`;
+  return url.replace(/([?&])subId2=[^&#]*/i, `$1subId2=${value}`);
 }
 
 /** "2026-10-19T18:30:00+01:00" — offset taken from Europe/London on that day. */

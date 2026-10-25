@@ -247,15 +247,11 @@ let imageIndex = 0;
       var raw = (new URLSearchParams(location.search).get("ch") || "").toLowerCase();
       var ch = /^[a-z0-9_]{1,32}$/.test(raw) ? raw : "web";
       var sub = "gig_guide_" + ch;
+      // Only Impact links carry subId2; DICE and other links are left alone.
       var re = /([?&])subId2=[^&#]*/i;
       document.querySelectorAll("a[data-ticket]").forEach(function (a) {
         var url = a.getAttribute("href") || "";
-        a.setAttribute(
-          "href",
-          re.test(url)
-            ? url.replace(re, "$1subId2=" + sub)
-            : url + (url.indexOf("?") === -1 ? "?" : "&") + "subId2=" + sub,
-        );
+        a.setAttribute("href", url.replace(re, "$1subId2=" + sub));
       });
       if (ch !== "web") {
         document.querySelectorAll("a[data-keep-ch]").forEach(function (a) {
