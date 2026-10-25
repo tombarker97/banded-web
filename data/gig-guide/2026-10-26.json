@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "weekStart": "2026-10-26",
+  "weekEnd": "2026-11-01",
+  "city": "London",
+  "column": "LONDON, OCT 26. Duran Duran play The O2 on Halloween and Macklemore has Wembley on Friday. Every night also has a smaller room, starting with Soaked at the 100 Club on Monday.\n\nTwo picks for every night below. Tap through for tickets.",
+  "cover": {
+    "headliner": "Duran Duran",
+    "imageUrl": "https://s1.ticketm.net/dam/a/c20/d80eae4f-8d81-4560-a16e-e629c2b78c20_TABLET_LANDSCAPE_16_9.jpg"
+  },
+  "generatedAt": "2026-10-25T11:55:41Z",
+  "days": [
+    {
+      "date": "2026-10-26",
+      "gigs": [
+        {
+          "tmEventId": "17uYv0G6GNjnSLL",
+          "headliner": "Jay Park",
+          "support": [
+            "LNGSHOT"
+          ],
+          "genre": "Hip-Hop/R&B",
+          "venue": "OVO Arena Wembley",
+          "postcode": "HA9 0AA",
+          "startTime": "18:30",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fjay-park-ft-lngshot-body-rolls-london-26-10-2026%2Fevent%2F370064C8DCAB37DF&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/93f/43ec098c-8d71-475c-9032-fa672d4ac93f_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Soaked",
+          "support": [],
+          "genre": "Punk/Indie",
+          "venue": "The 100 Club",
+          "postcode": "W1D 1LL",
+          "startTime": "19:30",
+          "ticketUrl": "https://dice.fm/event/dk77ae-soaked-26th-oct-the-100-club-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-09-23/9739f6ac-86b9-407a-a9ee-5cd294a09814.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "gigs": [
+        {
+          "tmEventId": "1ku8v0oaGAGnN1k",
+          "headliner": "Cody Johnson",
+          "support": [
+            "Parker McCollum",
+            "Emily Ann Roberts"
+          ],
+          "genre": "Country",
+          "venue": "The O2",
+          "postcode": "SE10 0DX",
+          "startTime": "18:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fcody-johnson-london-27-10-2026%2Fevent%2F350064449CAA3286&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/9e4/1351e77a-08d6-44ce-a0fd-8b6c068399e4_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Heavy Wild",
+          "support": [
+            "Alphabet",
+            "Form Affinity"
+          ],
+          "genre": "Lo-fi Rock",
+          "venue": "The Lexington",
+          "postcode": "N1 9JB",
+          "startTime": "19:00",
+          "ticketUrl": "https://dice.fm/event/v3x6bl-heavy-wild-ep-launch-alphabet-form-affinity-27th-oct-the-lexington-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-09-25/5259a705-af86-40fe-8893-a524930d9a1f.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "gigs": [
+        {
+          "tmEventId": null,
+          "headliner": "Magi Merlin",
+          "support": [],
+          "genre": "Alt R&B",
+          "venue": "Colours Hoxton",
+          "postcode": "N1 6NU",
+          "startTime": "20:00",
+          "ticketUrl": "https://dice.fm/event/dkporo-magi-merlin-28th-oct-colours-hoxton-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-09-28/288bcc3c-a187-48d4-a102-f4ee1f44418c.jpg?w=1600&auto=compress"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Knats",
+          "support": [],
+          "genre": "Jazz",
+          "venue": "MOTH Club",
+          "postcode": "E9 6NU",
+          "startTime": "19:30",
+          "ticketUrl": "https://dice.fm/event/mx9wnv--knats-28th-oct-moth-club-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-05-08/7121008a-ee0d-46e2-9632-8bd3c1c200e4.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "gigs": [
+        {
+          "tmEventId": "G5vHZ_7UNTd0U",
+          "headliner": "Steven Wilson",
+          "support": [],
+          "genre": "Prog Rock",
+          "venue": "Royal Albert Hall",
+          "postcode": "SW7 2AP",
+          "startTime": "18:45",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fsteven-wilson-london-29-10-2026%2Fevent%2F1F00644DA3FC3936&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/361/a8fe2b6c-5fc8-427a-b8a0-ef01ddb52361_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Grimm Grimm",
+          "support": [
+            "Raisa K",
+            "Relaxkev+IR"
+          ],
+          "genre": "Psych Folk",
+          "venue": "Rough Trade East",
+          "postcode": "E1 6QL",
+          "startTime": "19:00",
+          "ticketUrl": "https://dice.fm/event/7d56bb-rough-trade-recommends-grimm-grimm-raisa-k-relaxkevir-29th-oct-rough-trade-east-london-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-08-28/d21476eb-ae39-4bf9-8118-ce22e85ba042.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "gigs": [
+        {
+          "tmEventId": "1AMZkfMGkdDzbAk",
+          "headliner": "Macklemore",
+          "support": [],
+          "genre": "Hip-Hop",
+          "venue": "OVO Arena Wembley",
+          "postcode": "HA9 0AA",
+          "startTime": "18:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fmacklemore-friends-free-palestine-tour-london-30-10-2026%2Fevent%2F37006537FBE18146&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/bce/ad199875-06ba-44ad-8ba6-09713a007bce_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Sawyer",
+          "support": [
+            "Dreamhaus",
+            "Black Lounge"
+          ],
+          "genre": "Indie",
+          "venue": "The Elephant's Head",
+          "postcode": "NW1 8QR",
+          "startTime": "19:00",
+          "ticketUrl": "https://dice.fm/event/oem5er-sawyer-dreamhaus-black-lounge-30th-oct-the-elephants-head-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-10-05/4f2685cf-a1c2-44d1-b861-d011f67a052f.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "gigs": [
+        {
+          "tmEventId": "17u8v0G65UauVbE",
+          "headliner": "Duran Duran",
+          "support": [],
+          "genre": "Pop/New Wave",
+          "venue": "The O2",
+          "postcode": "SE10 0DX",
+          "startTime": "18:30",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fduran-duran-london-31-10-2026%2Fevent%2F350064BD89374627&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/c20/d80eae4f-8d81-4560-a16e-e629c2b78c20_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "fakemink",
+          "support": [],
+          "genre": "Rap",
+          "venue": "The Underworld",
+          "postcode": "NW1 0NE",
+          "startTime": "18:00",
+          "ticketUrl": "https://dice.fm/event/nvrnn3-fakemink-sold-out-31st-oct-the-underworld-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-10-20/ff1b963d-cd65-4aa9-8833-cac3afa04af5.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "gigs": [
+        {
+          "tmEventId": "1AdbZ_7GkR6xP9N",
+          "headliner": "The Kid LAROI",
+          "support": [
+            "Nate Sib",
+            "WizTheMc"
+          ],
+          "genre": "Pop/Hip-Hop",
+          "venue": "Eventim Apollo",
+          "postcode": "W6 9QH",
+          "startTime": "18:30",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fthe-kid-laroi-a-perfect-world-london-01-11-2026%2Fevent%2F3600644BC78A55E3&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/27a/5b10205a-5c08-4fb0-a40c-7de5b2d7827a_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": "1Fu8vPoVkoZ78ddu",
+          "headliner": "Jessie Mazin",
+          "support": [],
+          "genre": "Folk",
+          "venue": "The Lower Third",
+          "postcode": "WC2H 8NJ",
+          "startTime": "19:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fjessie-mazin-london-01-11-2026%2Fevent%2F350065474191F22C&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/7cd/839911b4-21ad-4252-bef6-1043dca1b7cd_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        }
+      ]
+    }
+  ]
+}
