@@ -181,7 +181,7 @@
           "startTime": "18:30",
           "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fthe-reytons-london-24-10-2026%2Fevent%2F37006542B8AA4E6A&utm_medium=affiliate&subId2=gig_guide",
           "imageUrl": "https://s1.ticketm.net/dam/a/92f/b92f88d5-d31e-43e0-b0c5-17f6b875c92f_TABLET_LANDSCAPE_16_9.jpg",
-          "status": "onsale"
+          "status": "offsale"
         },
         {
           "tmEventId": "17u8v0G6uD5Xgu_",
@@ -193,7 +193,7 @@
           "startTime": "18:30",
           "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Ffally-ipupa-london-24-10-2026%2Fevent%2F350064DECBFB5359&utm_medium=affiliate&subId2=gig_guide",
           "imageUrl": "https://s1.ticketm.net/dam/a/6fa/0acfe158-76dc-4233-a29f-b2bb76bb16fa_TABLET_LANDSCAPE_16_9.jpg",
-          "status": "onsale"
+          "status": "offsale"
         }
       ]
     },
