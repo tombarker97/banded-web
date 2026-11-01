@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "weekStart": "2026-11-02",
+  "weekEnd": "2026-11-08",
+  "city": "London",
+  "column": "LONDON, NOV 2. Stevie Wonder plays Songs in the Key of Life at The O2 on Tuesday, and Pitchfork Festival is in the small rooms all week.\n\nTwo picks for every night below. Tap through for tickets.",
+  "cover": {
+    "headliner": "Stevie Wonder",
+    "imageUrl": "https://s1.ticketm.net/dam/a/4a7/9603adc8-0157-4354-9704-6215ea6f64a7_TABLET_LANDSCAPE_16_9.jpg"
+  },
+  "generatedAt": "2026-11-01T17:58:49Z",
+  "days": [
+    {
+      "date": "2026-11-02",
+      "gigs": [
+        {
+          "tmEventId": "G5dzZ_3T_jAKJ",
+          "headliner": "Myles Smith",
+          "support": [],
+          "genre": "Pop/Folk",
+          "venue": "O2 Shepherds Bush Empire",
+          "postcode": "W12 8TT",
+          "startTime": "19:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fmyles-smith-london-02-11-2026%2Fevent%2F3E00652FD97054E6&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/264/0e4bba0e-8452-4107-baa1-f69c67fb1264_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": "G5vHZ_2LnWgVs",
+          "headliner": "Willow Avalon",
+          "support": [],
+          "genre": "Country",
+          "venue": "Union Chapel",
+          "postcode": "N1 2XD",
+          "startTime": "19:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fwillow-avalon-london-02-11-2026%2Fevent%2F1F0064F7EAF75D31&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/13b/c732c98d-6aea-4c8d-9101-1c363446113b_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "gigs": [
+        {
+          "tmEventId": "1AdfZ_oGkluZBFE",
+          "headliner": "Stevie Wonder",
+          "support": [],
+          "genre": "Soul/R&B",
+          "venue": "The O2",
+          "postcode": "SE10 0DX",
+          "startTime": "18:30",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fstevie-wonder-songs-in-the-key-london-03-11-2026%2Fevent%2F3500651ACD03A227&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/4a7/9603adc8-0157-4354-9704-6215ea6f64a7_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Greg Mendez",
+          "support": [
+            "Asher White",
+            "villagerrr"
+          ],
+          "genre": "Indie Folk",
+          "venue": "MOTH Club",
+          "postcode": "E9 6NU",
+          "startTime": "19:30",
+          "ticketUrl": "https://dice.fm/event/6dkw77-greg-mendez-asher-white-villagerrr-3rd-nov-moth-club-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-04-27/53c6695b-3159-41a7-903b-ac56c79496b4.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "gigs": [
+        {
+          "tmEventId": "1ku8v0QoGAGtEwZ",
+          "headliner": "Korn",
+          "support": [
+            "Architects (UK)",
+            "Youth Code"
+          ],
+          "genre": "Nu-Metal",
+          "venue": "The O2",
+          "postcode": "SE10 0DX",
+          "startTime": "18:30",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fkorn-london-04-11-2026%2Fevent%2F350064691CA67C80&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/3e0/61fa2f03-c50f-4b69-9571-b0d5141453e0_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Star Moles",
+          "support": [],
+          "genre": "Indie Rock",
+          "venue": "Next Door Records Two",
+          "postcode": "N16 7UY",
+          "startTime": "19:00",
+          "ticketUrl": "https://dice.fm/event/bbgg5m-star-moles-4th-nov-next-door-records-two-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-10-07/5875b770-3669-49c4-b180-e323e1250385.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "gigs": [
+        {
+          "tmEventId": "G5dzZ_aUV4ey8",
+          "headliner": "Dabeull",
+          "support": [],
+          "genre": "Funk",
+          "venue": "Troxy",
+          "postcode": "E1 0HX",
+          "startTime": "19:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fdabeull-london-05-11-2026%2Fevent%2F3E00649DB4542E50&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/e5b/b8e6da0c-6af1-4845-a32d-e656d9960e5b_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Colin Miller",
+          "support": [
+            "lifepath99",
+            "h. pruz",
+            "Elijah Wolf"
+          ],
+          "genre": "Alt Country",
+          "venue": "MOTH Club",
+          "postcode": "E9 6NU",
+          "startTime": "19:30",
+          "ticketUrl": "https://dice.fm/event/7dgqo7-colin-miller-lifepath99-h-pruz-elijah-wolf-5th-nov-moth-club-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-04-27/c52a18da-4a0d-4901-aa3b-3aef24161ba2.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "gigs": [
+        {
+          "tmEventId": "G5vHZ_Kfx2Jua",
+          "headliner": "Skepta",
+          "support": [],
+          "genre": "Grime",
+          "venue": "The Cause, London",
+          "postcode": "E16 1YZ",
+          "startTime": "19:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fskepta-the-fork-and-knife-tour-london-06-11-2026%2Fevent%2F1F006535223E6349&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/e04/72d571c0-e128-4604-9c6d-c2331dbdce04_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Insider Trading",
+          "support": [
+            "Pedestrian Band",
+            "and/or"
+          ],
+          "genre": "Indie Rock",
+          "venue": "Sebright Arms",
+          "postcode": "E2 9AG",
+          "startTime": "19:30",
+          "ticketUrl": "https://dice.fm/event/6dor9b-insider-trading-pedestrian-band-andor-6th-nov-sebright-arms-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-08-01/0639f175-bbe2-411f-8c16-8c83ed2100d5.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "gigs": [
+        {
+          "tmEventId": "LvZ18Q3U1dBf9EOZy_LZl",
+          "headliner": "Käärijä",
+          "support": [
+            "Little Sis Nora",
+            "July Jones"
+          ],
+          "genre": "Rap/Metal",
+          "venue": "Electric Brixton",
+          "postcode": "SW2 1RJ",
+          "startTime": "18:00",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.universe.com%2Fevents%2Fkaarija-tickets-RMW14V%3Fref%3Dticketmaster&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/cbf/501bb4f4-46ba-4eb0-9434-b7bb5a17acbf_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Pitchfork Dalston Takeover",
+          "support": [
+            "DIIV",
+            "Psychedelic Porn Crumpets",
+            "Working Men's Club"
+          ],
+          "genre": "Indie/Alt",
+          "venue": "EartH + 4 venues, Dalston",
+          "postcode": null,
+          "startTime": "18:00",
+          "ticketUrl": "https://dice.fm/event/6dkkxq-pitchfork-festival-2026-dalston-takeover-7th-nov-various-venues-earth-shacklewell-arms-the-victoria-cafe-oto-st-matthias-church-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-09-30/4eb2fc8b-5111-46c3-a8da-f577225518cc.jpg?w=1600&auto=compress"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "gigs": [
+        {
+          "tmEventId": "1AgZkoAGkdlg6kv",
+          "headliner": "Papa Roach",
+          "support": [
+            "LANDMVRKS",
+            "Sleep Theory"
+          ],
+          "genre": "Alt Metal",
+          "venue": "The O2",
+          "postcode": "SE10 0DX",
+          "startTime": "17:30",
+          "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fpapa-roach-rise-of-the-roach-london-08-11-2026%2Fevent%2F35006445EBD47181&utm_medium=affiliate&subId2=gig_guide",
+          "imageUrl": "https://s1.ticketm.net/dam/a/1aa/7956442e-0a20-49af-bc15-f58d2a86e1aa_TABLET_LANDSCAPE_16_9.jpg",
+          "status": "onsale"
+        },
+        {
+          "tmEventId": null,
+          "headliner": "Alex, Leave!",
+          "support": [
+            "SAND",
+            "Cry-99"
+          ],
+          "genre": "Indie",
+          "venue": "Sebright Arms",
+          "postcode": "E2 9AG",
+          "startTime": "19:30",
+          "ticketUrl": "https://dice.fm/event/yoqkwx-alex-leave-sand-cry-99-8th-nov-sebright-arms-london-tickets",
+          "imageUrl": "https://dice-media.imgix.net/attachments/2026-10-08/e7822ff6-177c-4c7a-9b18-f4b3315d6f9b.jpg?w=1600&auto=compress"
+        }
+      ]
+    }
+  ]
+}
