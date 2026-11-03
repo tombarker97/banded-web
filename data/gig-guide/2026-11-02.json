@@ -23,7 +23,7 @@
           "startTime": "19:00",
           "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fmyles-smith-london-02-11-2026%2Fevent%2F3E00652FD97054E6&utm_medium=affiliate&subId2=gig_guide",
           "imageUrl": "https://s1.ticketm.net/dam/a/264/0e4bba0e-8452-4107-baa1-f69c67fb1264_TABLET_LANDSCAPE_16_9.jpg",
-          "status": "onsale"
+          "status": "offsale"
         },
         {
           "tmEventId": "G5vHZ_2LnWgVs",
@@ -35,7 +35,7 @@
           "startTime": "19:00",
           "ticketUrl": "https://ticketmaster.evyy.net/c/7325854/2038758/24023?u=https%3A%2F%2Fwww.ticketmaster.co.uk%2Fwillow-avalon-london-02-11-2026%2Fevent%2F1F0064F7EAF75D31&utm_medium=affiliate&subId2=gig_guide",
           "imageUrl": "https://s1.ticketm.net/dam/a/13b/c732c98d-6aea-4c8d-9101-1c363446113b_TABLET_LANDSCAPE_16_9.jpg",
-          "status": "onsale"
+          "status": "offsale"
         }
       ]
     },
