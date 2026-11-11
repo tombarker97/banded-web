@@ -50,8 +50,7 @@ and a discovery surface for upcoming shows.
   Instagram Stories.
 - Backed by real data sources (MusicBrainz, Apple Music, Ticketmaster) rather than a
   community-only wiki — so artist names, venues, and event dates are authoritative.
-- Privacy-respecting: no ad targeting, no IDFA, no behavioural profiling. Optional
-  non-personalised ads only.
+- Privacy-respecting: no ads, no IDFA, no behavioural profiling.
 
 ## Site map
 
